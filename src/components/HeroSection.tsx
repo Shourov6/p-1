@@ -27,7 +27,6 @@ const HeroSection = ({ onScrollToAbout = () => {} }: HeroSectionProps) => {
           style={{ animationDelay: "2s" }}
         ></div>
       </div>
-
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
         {/* Left side - Text content */}
         <motion.div
@@ -37,12 +36,12 @@ const HeroSection = ({ onScrollToAbout = () => {} }: HeroSectionProps) => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 animate-glow"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 animate-glow w-[512px]"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            PORTFOLIO
+            SHOUROV
           </motion.h1>
 
           <motion.h2

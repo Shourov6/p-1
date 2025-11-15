@@ -11,7 +11,7 @@ interface AboutSectionProps {
 }
 
 const AboutSection = ({
-  profileImage = "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&q=80",
+  profileImage = "https://i.imgur.com/Uu1q9hL.jpeg",
   name = "Shourov",
   description = "I'm Shourov, a Computer Science student at Green University of Bangladesh, passionate about building modern digital solutions. As a freelancer on Fiverr, I've worked with clients worldwide, specializing in Wix and Squarespace website development. I also explore advanced areas like blockchain, cryptography, machine learning, and AI applications. My journey combines academic research, hands-on freelancing, and real-world projects—ranging from Android apps to machine learning models and web platforms.",
   highlightText = "Let's collaborate and create something innovative.",
@@ -28,8 +28,7 @@ const AboutSection = ({
   };
 
   const handleGitHubClick = () => {
-    console.log("GitHub button clicked");
-    // Add GitHub functionality here
+    window.open("https://github.com/Shourov6", "_blank");
   };
 
   const handleBehanceClick = () => {
@@ -72,6 +71,10 @@ const AboutSection = ({
                 src={profileImage}
                 alt={`${name}'s profile`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                onError={(e) => {
+                  console.error("Image failed to load:", profileImage);
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&q=80";
+                }}
               />
               <div className="absolute -inset-2 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink rounded-full blur opacity-40 animate-pulse"></div>
             </div>

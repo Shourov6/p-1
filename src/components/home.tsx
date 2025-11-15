@@ -114,9 +114,12 @@ const Home = () => {
           <div className="w-full md:w-1/3">
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80"
+                src="https://i.imgur.com/DnJWsmf.jpeg"
                 alt="Profile Photo"
                 className="w-full h-auto"
+                onError={(e) => {
+                  e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Shourov";
+                }}
               />
             </div>
           </div>
