@@ -8,18 +8,15 @@ import SectionsContainer from "./SectionsContainer";
 const Home = () => {
   // Template handlers - update these with actual functionality later
   const handleHeaderEmailClick = () => {
-    console.log("Header Email clicked");
-    // Add email functionality here
+    window.location.href = "mailto:asrshourov999@gmail.com";
   };
 
   const handleHeaderLinkedInClick = () => {
-    console.log("Header LinkedIn clicked");
-    // Add LinkedIn functionality here
+    window.open("https://www.linkedin.com/in/asr-shourov-6420912b8", "_blank");
   };
 
   const handleHeaderGitHubClick = () => {
-    console.log("Header GitHub clicked");
-    // Add GitHub functionality here
+    window.open("https://github.com/Shourov6", "_blank");
   };
 
   const handleHeaderFigmaClick = () => {
@@ -28,18 +25,15 @@ const Home = () => {
   };
 
   const handleAboutEmailClick = () => {
-    console.log("About Email clicked");
-    // Add email functionality here
+    window.location.href = "mailto:asrshourov999@gmail.com";
   };
 
   const handleAboutLinkedInClick = () => {
-    console.log("About LinkedIn clicked");
-    // Add LinkedIn functionality here
+    window.open("https://www.linkedin.com/in/asr-shourov-6420912b8", "_blank");
   };
 
   const handleAboutGitHubClick = () => {
-    console.log("About GitHub clicked");
-    // Add GitHub functionality here
+    window.open("https://github.com/Shourov6", "_blank");
   };
 
   const handleAboutBehanceClick = () => {
@@ -48,13 +42,11 @@ const Home = () => {
   };
 
   const handleFooterLinkedInClick = () => {
-    console.log("Footer LinkedIn clicked");
-    // Add LinkedIn functionality here
+    window.open("https://www.linkedin.com/in/asr-shourov-6420912b8", "_blank");
   };
 
   const handleFooterGitHubClick = () => {
-    console.log("Footer GitHub clicked");
-    // Add GitHub functionality here
+    window.open("https://github.com/Shourov6", "_blank");
   };
 
   const handleFooterFigmaClick = () => {
@@ -76,38 +68,41 @@ const Home = () => {
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="text-2xl font-bold text-blue-400">SS</div>
-        <div className="flex space-x-4">
+        <div
+          className="text-2xl text-[#22d3ee] italic"
+          style={{ fontFamily: "'Great Vibes', cursive" }}
+        >
+          ASR
+        </div>
+        <div className={"flex space-x-4"}>
           <button
-            onClick={handleHeaderEmailClick}
-            className="hover:text-orange-400 transition-colors"
+            className={"hover:text-orange-400 transition-colors"}
+            onClick={() => console.log("onClick")}
           >
-            <Mail size={20} />
+            <Mail size={20}></Mail>
           </button>
           <button
-            onClick={handleHeaderLinkedInClick}
-            className="hover:text-orange-400 transition-colors"
+            className={"hover:text-orange-400 transition-colors"}
+            onClick={() => console.log("onClick")}
           >
-            <Linkedin size={20} />
+            <Linkedin size={20}></Linkedin>
           </button>
           <button
-            onClick={handleHeaderGitHubClick}
-            className="hover:text-orange-400 transition-colors"
+            className={"hover:text-orange-400 transition-colors"}
+            onClick={() => console.log("onClick")}
           >
-            <Github size={20} />
+            <Github size={20}></Github>
           </button>
           <button
-            onClick={handleHeaderFigmaClick}
-            className="hover:text-orange-400 transition-colors"
+            className={"hover:text-orange-400 transition-colors"}
+            onClick={() => console.log("onClick")}
           >
-            <Figma size={20} />
+            <Figma size={20}></Figma>
           </button>
         </div>
       </header>
-
       {/* Hero Section */}
       <HeroSection onScrollToAbout={handleScrollToAbout} />
-
       {/* About Me Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="flex flex-col md:flex-row gap-10 items-center">
@@ -118,7 +113,8 @@ const Home = () => {
                 alt="Profile Photo"
                 className="w-full h-auto"
                 onError={(e) => {
-                  e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Shourov";
+                  e.currentTarget.src =
+                    "https://api.dicebear.com/7.x/avataaars/svg?seed=Shourov";
                 }}
               />
             </div>
@@ -140,14 +136,33 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              I'm Shourov, a Computer Science student at Green University of
-              Bangladesh, passionate about building modern digital solutions. As
-              a freelancer on Fiverr, I've worked with clients worldwide,
-              specializing in Wix and Squarespace website development. I also
-              explore advanced areas like blockchain, cryptography, machine
-              learning, and AI applications. My journey combines academic
-              research, hands-on freelancing, and real-world projects—ranging
-              from Android apps to machine learning models and web platforms.
+              I'm Shourov, a{" "}
+              <span className="text-blue-400 font-semibold">
+                Computer Science student at Green University of Bangladesh
+              </span>
+              , passionate about building intelligent solutions that make a real
+              impact. As a{" "}
+              <span className="text-neon-orange font-semibold">
+                freelancer on Fiverr
+              </span>
+              , I've successfully delivered professional websites using Wix and
+              Squarespace for clients worldwide.
+            </motion.p>
+            <motion.p
+              className="mb-4 text-gray-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              viewport={{ once: true }}
+            >
+              My passion lies in{" "}
+              <span className="text-purple-400 font-semibold">
+                Artificial Intelligence and Machine Learning
+              </span>{" "}
+              — I've built prediction systems for healthcare, developed deep
+              learning models for currency recognition, and deployed ML-powered
+              web applications. I combine academic research with hands-on
+              development to create solutions that solve real-world problems.
             </motion.p>
             <motion.p
               className="mb-6 text-orange-400 font-medium"
@@ -156,7 +171,8 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Let's collaborate and create something innovative.
+              Open to freelance work, research collaboration, and AI/ML
+              projects. Let's build something impactful together.
             </motion.p>
             <motion.div
               className="flex flex-wrap gap-3"
@@ -193,13 +209,69 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Projects Section */}
       <ProjectsSection />
-
       {/* Other Sections Container */}
       <SectionsContainer />
-
+      {/* Call to Action Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-1/4 w-64 h-64 bg-neon-blue/10 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div
+            className="absolute bottom-10 right-1/4 w-64 h-64 bg-neon-purple/10 rounded-full blur-3xl animate-pulse-slow"
+            style={{ animationDelay: "2s" }}
+          ></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+              Let's Work Together
+            </h2>
+            <p className="text-gray-300 text-lg mb-8">
+              Whether you need a professional website, want to collaborate on an
+              AI/ML research project, or have a unique challenge to solve — I'm
+              ready to help bring your ideas to life.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                onClick={handleAboutEmailClick}
+                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 rounded-full font-semibold shadow-2xl hover-lift transition-all duration-300"
+              >
+                <Mail size={20} /> Start a Project
+              </button>
+              <button
+                onClick={handleAboutLinkedInClick}
+                className="flex items-center gap-2 border-2 border-neon-orange text-neon-orange hover:bg-neon-orange/20 px-8 py-4 rounded-full font-semibold hover-lift transition-all duration-300"
+              >
+                <Linkedin size={20} /> Connect on LinkedIn
+              </button>
+              <button
+                onClick={handleAboutGitHubClick}
+                className="flex items-center gap-2 border-2 border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white hover:bg-gray-800/50 px-8 py-4 rounded-full font-semibold hover-lift transition-all duration-300"
+              >
+                <Github size={20} /> View My Code
+              </button>
+            </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-gray-400">
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">✓</span> Freelance Projects
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">✓</span> Research Collaboration
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-green-400">✓</span> AI/ML Development
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
       {/* Footer */}
       <footer className="bg-gray-950 py-10">
         <div className="container mx-auto px-4">
@@ -230,7 +302,10 @@ const Home = () => {
                 <Mail size={24} />
               </button>
             </div>
-            <p className="text-gray-500 text-sm">&copy; Shourov 2025</p>
+            <p className="text-gray-500 text-sm">
+              &copy; Shourov 2025 — Computer Science Student | AI Enthusiast |
+              Web Developer
+            </p>
           </div>
         </div>
       </footer>

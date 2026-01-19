@@ -1,29 +1,41 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { ArrowDownIcon } from "lucide-react";
+import { ArrowDownIcon, Briefcase, Download } from "lucide-react";
+import FloatingCodeBackground from "./FloatingCodeBackground";
 
 interface HeroSectionProps {
   onScrollToAbout?: () => void;
+  onScrollToProjects?: () => void;
 }
 
-const HeroSection = ({ onScrollToAbout = () => {} }: HeroSectionProps) => {
-  // Template handlers - update these with actual functionality later
-  const handleLearnMore = () => {
-    console.log("Learn More clicked");
-    onScrollToAbout();
+const HeroSection = ({ onScrollToAbout = () => {}, onScrollToProjects = () => {} }: HeroSectionProps) => {
+  const handleViewProjects = () => {
+    onScrollToProjects();
   };
+
+  const handleHireMe = () => {
+    window.location.href = "mailto:asrshourov999@gmail.com?subject=Freelance%20Opportunity";
+  };
+
+  const handleDownloadResume = () => {
+    // Opens resume link - update with actual resume URL when available
+    window.open("#", "_blank");
+  };
+
   return (
-    <section className="min-h-screen w-full flex items-center justify-between px-6 md:px-16 lg:px-24 py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+    <section className="min-h-screen w-full flex items-center justify-between px-6 md:px-16 lg:px-24 py-20 relative overflow-hidden">
+      {/* Futuristic Floating Code Background */}
+      <FloatingCodeBackground />
+      {/* Additional glow orbs for depth */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
         <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse-slow"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow"
           style={{ animationDelay: "1s" }}
         ></div>
         <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl animate-pulse-slow"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/8 rounded-full blur-3xl animate-pulse-slow"
           style={{ animationDelay: "2s" }}
         ></div>
       </div>
@@ -36,7 +48,7 @@ const HeroSection = ({ onScrollToAbout = () => {} }: HeroSectionProps) => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 animate-glow w-[512px]"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 animate-glow w-[610px]"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -50,28 +62,43 @@ const HeroSection = ({ onScrollToAbout = () => {} }: HeroSectionProps) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Computer Science Student · Web Developer · AI Enthusiast
+            AI & Machine Learning · Full-Stack Web Development · Real-World Solutions
           </motion.h2>
 
           <motion.p
-            className="text-lg md:text-xl text-gray-300 mb-8 font-medium"
+            className="text-lg md:text-xl text-gray-300 mb-8 font-medium max-w-xl"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Turning ideas into impactful digital solutions
+            Building intelligent applications that solve real problems — from ML-powered prediction systems to custom web platforms for global clients.
           </motion.p>
 
           <motion.div
+            className="flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <Button
-              onClick={handleLearnMore}
+              onClick={handleViewProjects}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white flex items-center gap-2 px-8 py-6 rounded-full text-lg font-semibold shadow-2xl hover-lift neon-glow shimmer-effect transition-all duration-300"
             >
-              Learn More <ArrowDownIcon size={18} className="animate-bounce" />
+              View Projects <ArrowDownIcon size={18} className="animate-bounce" />
+            </Button>
+            <Button
+              onClick={handleHireMe}
+              variant="outline"
+              className="border-2 border-neon-orange text-neon-orange hover:bg-neon-orange/20 flex items-center gap-2 px-8 py-6 rounded-full text-lg font-semibold hover-lift transition-all duration-300"
+            >
+              <Briefcase size={18} /> Hire Me
+            </Button>
+            <Button
+              onClick={handleDownloadResume}
+              variant="outline"
+              className="border-2 border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white hover:bg-gray-800/50 flex items-center gap-2 px-6 py-6 rounded-full text-lg font-semibold hover-lift transition-all duration-300"
+            >
+              <Download size={18} /> Resume
             </Button>
           </motion.div>
         </motion.div>
@@ -93,7 +120,7 @@ const HeroSection = ({ onScrollToAbout = () => {} }: HeroSectionProps) => {
               alt="Character with lightbulb"
               className="max-w-full h-auto rounded-3xl shadow-2xl glass-effect border-2 border-blue-500/50 hover-lift"
             />
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-3xl blur opacity-30 animate-pulse"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-3xl blur opacity-30 animate-pulse left-[-2px] top-[-11px]"></div>
           </motion.div>
         </motion.div>
       </div>
