@@ -10,10 +10,8 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100">
-      <BrowserRouter basename={basename}>
-        <App />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter basename={basename}>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 );

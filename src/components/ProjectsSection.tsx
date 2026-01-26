@@ -656,7 +656,7 @@ const defaultProjects: Project[] = [
     techStack: ["Wix", "Travel", "Booking System", "UI Design"],
     link: "https://asrshourov999.wixstudio.com/my-site-1",
     githubLink: "#", // N/A for Wix projects
-    image: "https://i.imgur.com/be99Ye6.png", // 🖼️ REPLACE WITH JETLINK TRAVELS SCREENSHOT
+    image: "https://i.postimg.cc/sXcSGCVC/Screenshot-2026-01-21-184521.png",
     category: "cms",
   },
   {
@@ -666,7 +666,7 @@ const defaultProjects: Project[] = [
     techStack: ["Wix", "Rental System", "Booking", "Local Business"],
     link: "https://sourob123theking.wixsite.com/bike-rent-bd",
     githubLink: "#", // N/A for Wix projects
-    image: "https://i.imgur.com/be99Ye6.png", // 🖼️ REPLACE WITH BIKE RENT BD SCREENSHOT FROM IMGUR
+    image: "https://i.imgur.com/jrFqHzX.png",
     category: "cms",
   },
   {
