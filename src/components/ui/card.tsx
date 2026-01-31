@@ -25,9 +25,7 @@ const CardHeader = React.forwardRef<
     ref={ref}
     className={cn("flex flex-col space-y-1.5 p-6", className)}
     {...props}
-  >
-    <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl h-[40px]  text-white"></h1>
-  </div>
+  />
 ));
 CardHeader.displayName = "CardHeader";
 
@@ -39,11 +37,7 @@ const CardTitle = React.forwardRef<
     ref={ref}
     className={cn("font-semibold leading-none tracking-tight", className)}
     {...props}
-  >
-    <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl h-[40px]  text-white">
-      Header 1
-    </h1>
-  </h3>
+  />
 ));
 CardTitle.displayName = "CardTitle";
 
