@@ -18,6 +18,11 @@ import {
   TestTube,
   Rocket,
   ArrowRight,
+  TrendingUp,
+  Award,
+  Brain,
+  Activity,
+  Microscope,
 } from "lucide-react";
 
 interface SectionProps {
@@ -206,17 +211,6 @@ const SkillIcon = ({ name, icon }: { name: string; icon: React.ReactNode }) => {
 };
 
 const SectionsContainer = () => {
-  // Expertise areas
-  const expertiseAreas = [
-    "Web Development",
-    "Machine Learning",
-    "AI Applications",
-    "Blockchain",
-    "Cryptography",
-    "Android Development",
-    "UI/UX Design",
-  ];
-
   // Working style tags
   const workingStyles = [
     "Problem-Solver",
@@ -251,6 +245,95 @@ const SectionsContainer = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl relative z-10">
+        {/* Impact & Achievements Section */}
+        <Section title="Impact & Achievements" icon={<TrendingUp size={24} />}>
+          <p className="text-gray-300 mb-8">Highlights of my professional journey</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="bg-gradient-to-br from-neon-blue/10 to-neon-purple/10 border-neon-blue/30 hover:border-neon-blue/60 transition-all duration-500 hover-lift glass-effect group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 flex items-center justify-center border border-neon-blue/50">
+                  <Brain className="text-neon-blue" size={32} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2">3+</h3>
+                <p className="text-neon-blue font-medium mb-1">ML Models Deployed</p>
+                <p className="text-gray-400 text-sm">Multiple machine learning models built and deployed for real-world applications</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-neon-orange/10 to-yellow-500/10 border-neon-orange/30 hover:border-neon-orange/60 transition-all duration-500 hover-lift glass-effect group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-orange/20 to-yellow-500/20 flex items-center justify-center border border-neon-orange/50">
+                  <Users className="text-neon-orange" size={32} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2">10+</h3>
+                <p className="text-neon-orange font-medium mb-1">Global Freelance Clients</p>
+                <p className="text-gray-400 text-sm">Delivered professional websites for clients worldwide via Fiverr</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-neon-purple/10 to-neon-pink/10 border-neon-purple/30 hover:border-neon-purple/60 transition-all duration-500 hover-lift glass-effect group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-neon-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-purple/20 to-neon-pink/20 flex items-center justify-center border border-neon-purple/50">
+                  <Activity className="text-neon-purple" size={32} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2">5+</h3>
+                <p className="text-neon-purple font-medium mb-1">Live Streamlit Apps</p>
+                <p className="text-gray-400 text-sm">Deployed data-driven web applications on Streamlit cloud</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-cyan-500/30 hover:border-cyan-500/60 transition-all duration-500 hover-lift glass-effect group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center border border-cyan-500/50">
+                  <Microscope className="text-cyan-400" size={32} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2">2+</h3>
+                <p className="text-cyan-400 font-medium mb-1">Research Projects</p>
+                <p className="text-gray-400 text-sm">Academic AI/ML research including breast cancer grade classification</p>
+              </CardContent>
+            </Card>
+          </div>
+        </Section>
+
+        {/* Research & AI Focus Section */}
+        <Section title="Research & AI Focus" icon={<Microscope size={24} />}>
+          <Card className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700/50 hover:border-neon-blue/50 transition-all duration-500 glass-effect group relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardContent className="p-8 relative z-10">
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 flex items-center justify-center border border-neon-blue/50 shadow-lg shadow-neon-blue/25">
+                    <Brain className="text-neon-blue" size={40} />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    My research interests center on <span className="text-neon-blue font-semibold">AI-powered healthcare solutions</span>, including work on <span className="text-neon-purple font-semibold">Breast Cancer Grade Classification</span> using deep learning techniques. I'm passionate about developing <span className="text-neon-orange font-semibold">decision-support systems</span> that leverage machine learning to assist medical professionals and improve diagnostic accuracy.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <Badge variant="outline" className="bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 text-neon-blue border-neon-blue/50 px-4 py-2 text-sm transition-all duration-300 glass-effect hover:shadow-lg hover:shadow-neon-blue/25">
+                      Medical AI
+                    </Badge>
+                    <Badge variant="outline" className="bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 text-neon-purple border-neon-purple/50 px-4 py-2 text-sm transition-all duration-300 glass-effect hover:shadow-lg hover:shadow-neon-purple/25">
+                      Deep Learning
+                    </Badge>
+                    <Badge variant="outline" className="bg-gradient-to-r from-neon-orange/20 to-yellow-500/20 text-neon-orange border-neon-orange/50 px-4 py-2 text-sm transition-all duration-300 glass-effect hover:shadow-lg hover:shadow-neon-orange/25">
+                      Decision Support Systems
+                    </Badge>
+                    <Badge variant="outline" className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border-cyan-500/50 px-4 py-2 text-sm transition-all duration-300 glass-effect hover:shadow-lg hover:shadow-cyan-500/25">
+                      Image Classification
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </Section>
+
         {/* Experience Section */}
         <Section title="Experience" icon={<Briefcase size={24} />}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -299,21 +382,6 @@ const SectionsContainer = () => {
               degree="B.Sc. in Computer Science & Engineering (Ongoing)"
               courses="Machine Learning, Cryptography, Web Development"
             />
-          </div>
-        </Section>
-
-        {/* Expertise Section */}
-        <Section title="Expertise" icon={<Code size={24} />}>
-          <div className="flex flex-wrap gap-3">
-            {expertiseAreas.map((area, index) => (
-              <Badge
-                key={index}
-                variant="outline"
-                className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 text-white border-gray-700/50 hover:border-neon-blue hover:bg-neon-blue/20 hover:text-neon-blue px-4 py-2 text-sm transition-all duration-300 glass-effect hover:shadow-lg hover:shadow-neon-blue/25"
-              >
-                {area}
-              </Badge>
-            ))}
           </div>
         </Section>
 

@@ -313,60 +313,6 @@ const ProjectsSection = ({
           </div>
         </motion.div>
 
-        {/* Impact & Achievements Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-green-500/20 to-teal-500/20 border border-green-500/50">
-              <Trophy className="text-green-400" size={28} />
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-white">Impact & Achievements</h3>
-              <p className="text-gray-400">Highlights of my professional journey</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {impactItems.map((item, index) => (
-              <ImpactCard key={index} item={item} />
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Research & AI Focus Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mb-20 p-8 rounded-2xl bg-gradient-to-br from-purple-900/20 via-gray-800/30 to-indigo-900/20 border border-purple-500/20 glass-effect"
-        >
-          <div className="flex items-start gap-4 mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-purple-500/50">
-              <Brain className="text-purple-400" size={28} />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-2">Research & AI Focus</h3>
-              <p className="text-gray-300">
-                My research interests center on <span className="text-purple-400 font-semibold">AI-powered healthcare solutions</span>, 
-                including work on Breast Cancer Grade Classification using deep learning techniques. 
-                I'm passionate about developing <span className="text-blue-400 font-semibold">decision-support systems</span> that 
-                leverage machine learning to assist medical professionals and improve diagnostic accuracy.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">Medical AI</Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Deep Learning</Badge>
-                <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Decision Support Systems</Badge>
-                <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30">Image Classification</Badge>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Filter Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

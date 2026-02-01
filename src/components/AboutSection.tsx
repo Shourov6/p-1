@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { Mail, Linkedin, Github, Figma } from "lucide-react";
+import { Mail, Linkedin, Github, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface AboutSectionProps {
@@ -13,8 +13,8 @@ interface AboutSectionProps {
 const AboutSection = ({
   profileImage = "https://i.imgur.com/Uu1q9hL.jpeg",
   name = "Shourov",
-  description = "I'm Shourov, a Computer Science student at Green University of Bangladesh, passionate about building modern digital solutions. As a freelancer on Fiverr, I've worked with clients worldwide, specializing in Wix and Squarespace website development. I also explore advanced areas like blockchain, cryptography, machine learning, and AI applications. My journey combines academic research, hands-on freelancing, and real-world projects—ranging from Android apps to machine learning models and web platforms.",
-  highlightText = "Let's collaborate and create something innovative.",
+  description = "I'm Shourov, a Computer Science student at Green University of Bangladesh, passionate about building intelligent solutions that make a real impact. As a freelancer on Fiverr, I've successfully delivered professional websites using Wix and Squarespace for clients worldwide.\n\nMy passion lies in Artificial Intelligence and Machine Learning — I've built prediction systems for healthcare, developed deep learning models for currency recognition, and deployed ML-powered web applications. I combine academic research with hands-on development to create solutions that solve real-world problems.\n\nOpen to freelance work, research collaboration, and AI/ML projects. Let's build something impactful together.",
+  highlightText = "Let's collaborate and create something impactful.",
 }: AboutSectionProps) => {
   // Template handlers - update these with actual functionality later
   const handleEmailClick = () => {
@@ -119,6 +119,37 @@ const AboutSection = ({
               {highlightText}
             </motion.p>
 
+            {/* Expertise Badges */}
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-gray-400 text-sm font-semibold uppercase tracking-widest mb-4">My Expertise</h3>
+              <div className="flex flex-wrap gap-3">
+                {["Web Development", "Machine Learning", "AI Applications", "Blockchain", "Cryptography", "Android Development", "UI/UX Design"].map((skill, index) => (
+                  <motion.div
+                    key={index}
+                    className="group relative px-4 py-2 rounded-lg bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 border border-neon-blue/50 hover:border-neon-blue transition-all duration-300 glass-effect cursor-pointer"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                  >
+                    <span className="text-neon-blue text-sm font-medium group-hover:text-white transition-colors duration-300">
+                      {skill}
+                    </span>
+                    {/* Hover glow effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-neon-blue/30 rounded-lg blur-md transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 shadow-lg shadow-neon-blue/25 rounded-lg transition-all duration-300"></div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
             <motion.div
               className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -158,7 +189,7 @@ const AboutSection = ({
                 variant="outline"
                 className="flex items-center gap-2 border-neon-pink text-neon-pink hover:bg-neon-pink/20 hover:border-neon-pink hover:shadow-lg hover:shadow-neon-pink/25 transition-all duration-300 glass-effect"
               >
-                <Figma size={18} />
+                <Palette size={18} />
                 Behance
               </Button>
             </motion.div>
