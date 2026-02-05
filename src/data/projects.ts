@@ -178,45 +178,100 @@ export const projects: Project[] = [
       "Developed an early detection system for breast cancer using CNN-based image classification. Aims to assist medical professionals in faster, more accurate diagnosis.",
     techStack: ["Python", "TensorFlow", "CNN", "Medical Imaging"],
     link: "#", // 🔗 ADD YOUR LIVE LINK HERE (if deployed)
-    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
+    githubLink: "https://github.com/Shourov6/ihc-cancer-app", // 🔗 ADD YOUR GITHUB LINK HERE
     image:
       "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
-    category: "aiml",
-  },
-  {
-    id: "parkinsons-prediction",
-    title: "Parkinson's Disease Prediction",
-    description:
-      "Built a predictive model analyzing voice biomarkers for early Parkinson's detection. Contributes to non-invasive diagnostic research in neurology.",
-    techStack: ["Python", "Scikit-learn", "Signal Processing"],
-    link: "#", // 🔗 ADD YOUR LIVE LINK HERE (if deployed)
-    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
-    image:
-      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "aiml",
   },
   {
     id: "currency-recognition",
     title: "Bangladeshi Currency Recognition",
     description:
-      "Created a deep learning solution for visually impaired users to identify currency denominations. Integrated into Android app using Jetpack Compose.",
-    techStack: ["PyTorch", "CNN", "Jetpack Compose", "Android"],
-    link: "#", // 🔗 ADD YOUR LIVE LINK HERE (if APK available)
-    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
+      "Developed a deep learning-based system to recognize Bangladeshi currency denominations from images. The project focuses on real-world usability and was later integrated into an Android application to assist visually impaired users.",
+    techStack: ["PyTorch", "CNN", "Deep Learning", "Computer Vision"],
+    link: "#",
+    githubLink: "https://github.com/Shourov6/currency-recognition",
     image:
-      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&q=80",
     category: "aiml",
   },
+
   {
-    id: "xor-classification",
-    title: "XOR Classification (MLP from Scratch)",
+    id: "ihc-cancer-app",
+    title: "IHC Cancer Image Classification",
     description:
-      "Implemented a neural network from scratch to solve XOR classification, demonstrating deep understanding of backpropagation and gradient descent fundamentals.",
-    techStack: ["Python", "NumPy", "Neural Networks"],
-    link: "#", // 🔗 ADD YOUR LIVE LINK HERE (if notebook deployed)
-    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
+      "Built a deep learning application to classify Immunohistochemistry (IHC) stained cancer images. Multiple CNN architectures were used along with explainability techniques to improve trust in medical predictions.",
+    techStack: [
+      "PyTorch",
+      "CNN",
+      "ResNet50",
+      "EfficientNet",
+      "SHAP",
+      "Grad-CAM",
+      "Medical Imaging",
+    ],
+    link: "#",
+    githubLink: "https://github.com/Shourov6/ihc-cancer-app",
     image:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
+    category: "aiml",
+  },
+
+  {
+    id: "student-dropout-app",
+    title: "Student Dropout Prediction System",
+    description:
+      "Implemented a machine learning model to predict student dropout risk based on academic and behavioral data. The system helps educational institutions identify at-risk students early.",
+    techStack: [
+      "Python",
+      "Scikit-learn",
+      "Machine Learning",
+      "Data Analysis",
+      "Pandas",
+      "NumPy",
+    ],
+    link: "#",
+    githubLink: "https://github.com/Shourov6/student-dropout-app",
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
+    category: "aiml",
+  },
+
+  {
+    id: "study-assistant-mvp",
+    title: "AI Study Assistant (MVP)",
+    description:
+      "Created an AI-powered study assistant capable of answering academic questions and assisting learners using natural language processing techniques.",
+    techStack: [
+      "Python",
+      "NLP",
+      "Machine Learning",
+      "Transformers",
+      "AI Assistant",
+    ],
+    link: "#",
+    githubLink: "https://github.com/Shourov6/study-assistant-mvp",
+    image:
+      "https://images.unsplash.com/photo-1584697964403-f5f4d6c2f1c5?w=800&q=80",
+    category: "aiml",
+  },
+
+  {
+    id: "ml-lab",
+    title: "Machine Learning Lab Projects",
+    description:
+      "A collection of machine learning lab experiments covering core ML concepts such as classification, regression, clustering, and model evaluation using real datasets.",
+    techStack: [
+      "Python",
+      "Scikit-learn",
+      "Machine Learning",
+      "Data Preprocessing",
+      "Model Evaluation",
+    ],
+    link: "#",
+    githubLink: "https://github.com/Shourov6/ML-lab",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
     category: "aiml",
   },
 ];
