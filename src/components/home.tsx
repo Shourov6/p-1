@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Figma } from "lucide-react";
 import HeroSection from "./HeroSection";
@@ -6,6 +6,9 @@ import ProjectsSection from "./ProjectsSection";
 import SectionsContainer from "./SectionsContainer";
 
 const Home = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const projectsSectionRef = useRef<HTMLDivElement>(null);
+  
   // Template handlers - update these with actual functionality later
   const handleHeaderEmailClick = () => {
     window.location.href = "mailto:asrshourov999@gmail.com";
@@ -64,6 +67,21 @@ const Home = () => {
     // Add scroll functionality here
   };
 
+  const handleScrollToProjects = (category?: string) => {
+    if (category) {
+      setSelectedCategory(category);
+    }
+    // Immediate scroll - no delay needed
+    requestAnimationFrame(() => {
+      const projectsElement = document.getElementById('projects-section');
+      if (projectsElement) {
+        const yOffset = -20; // Slight offset from top
+        const y = projectsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
@@ -102,7 +120,7 @@ const Home = () => {
         </div>
       </header>
       {/* Hero Section */}
-      <HeroSection onScrollToAbout={handleScrollToAbout} />
+      <HeroSection onScrollToAbout={handleScrollToAbout} onScrollToProjects={handleScrollToProjects} />
       {/* About Me Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="flex flex-col md:flex-row gap-10 items-center">
@@ -138,15 +156,11 @@ const Home = () => {
             >
               I'm Shourov, a{" "}
               <span className="text-blue-400 font-semibold">
-                Computer Science student at Green University of Bangladesh
+                Computer Science graduate from Green University of Bangladesh
               </span>
               , passionate about building intelligent solutions that make a real
-              impact. As a{" "}
-              <span className="text-neon-orange font-semibold">
-                freelancer on Fiverr
-              </span>
-              , I've successfully delivered professional websites using Wix and
-              Squarespace for clients worldwide.
+              impact. I have hands-on experience in web development, having delivered professional websites using Wix and
+              Squarespace for clients worldwide, as well as building full-stack web applications.
             </motion.p>
             <motion.p
               className="mb-4 text-gray-300"
@@ -159,9 +173,9 @@ const Home = () => {
               <span className="text-purple-400 font-semibold">
                 Artificial Intelligence and Machine Learning
               </span>{" "}
-              — I've built prediction systems for healthcare, developed deep
+              — I've developed prediction systems for healthcare, built deep
               learning models for currency recognition, and deployed ML-powered
-              web applications. I combine academic research with hands-on
+              web applications. I combine academic knowledge with practical
               development to create solutions that solve real-world problems.
             </motion.p>
             <motion.p
@@ -172,7 +186,7 @@ const Home = () => {
               viewport={{ once: true }}
             >
               Open to freelance work, research collaboration, and AI/ML
-              projects. Let's build something impactful together.
+              projects. Let's build something innovative and impactful together.
             </motion.p>
             <motion.div
               className="flex flex-wrap gap-3"
@@ -210,7 +224,9 @@ const Home = () => {
         </div>
       </section>
       {/* Projects Section */}
-      <ProjectsSection />
+      <div ref={projectsSectionRef}>
+        <ProjectsSection selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
+      </div>
       {/* Other Sections Container */}
       <SectionsContainer />
       {/* Call to Action Section */}

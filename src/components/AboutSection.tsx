@@ -13,8 +13,8 @@ interface AboutSectionProps {
 const AboutSection = ({
   profileImage = "https://i.imgur.com/Uu1q9hL.jpeg",
   name = "Shourov",
-  description = "I'm Shourov, a Computer Science student at Green University of Bangladesh, passionate about building intelligent solutions that make a real impact. As a freelancer on Fiverr, I've successfully delivered professional websites using Wix and Squarespace for clients worldwide.\n\nMy passion lies in Artificial Intelligence and Machine Learning — I've built prediction systems for healthcare, developed deep learning models for currency recognition, and deployed ML-powered web applications. I combine academic research with hands-on development to create solutions that solve real-world problems.\n\nOpen to freelance work, research collaboration, and AI/ML projects. Let's build something impactful together.",
-  highlightText = "Let's collaborate and create something impactful.",
+  description = "I'm Shourov, a Computer Science graduate from Green University of Bangladesh, passionate about building intelligent solutions that make a real impact. I have hands-on experience in web development, having delivered professional websites using Wix and Squarespace for clients worldwide, as well as building full-stack web applications.\n\nMy passion lies in Artificial Intelligence and Machine Learning — I've developed prediction systems for healthcare, built deep learning models for currency recognition, and deployed ML-powered web applications. I combine academic knowledge with practical development to create solutions that solve real-world problems.\n\nOpen to freelance work, research collaboration, and AI/ML projects. Let's build something innovative and impactful together.",
+  highlightText = "Let's collaborate and create something innovative and impactful.",
 }: AboutSectionProps) => {
   // Template handlers - update these with actual functionality later
   const handleEmailClick = () => {

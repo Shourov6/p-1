@@ -43,27 +43,35 @@ export const projects: Project[] = [
     category: "uiux",
   },
   {
-    id: "mobile-app-ui",
-    title: "Mobile App UI Concepts",
+    id: "E-commerce website for hair care products and treatments",
+    title: "E-commerce website for hair care products and treatments",
     description:
       "Created accessible mobile UI layouts addressing navigation complexity in mobile apps. Implements Material Design principles for consistent cross-platform experience.",
     techStack: ["Flutter", "Material UI", "Dart"],
-    link: "#", // 🔗 ADD YOUR LIVE LINK HERE
+    link: "https://i.imgur.com/lZhA4R0.jpeg", // 🔗 ADD YOUR LIVE LINK HERE
     githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+    image: "https://i.imgur.com/44UWAMY.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "uiux",
   },
   {
-    id: "social-media-designs",
-    title: "Social Media & Presentation Designs",
-    description:
-      "Produced professional visual content for university clubs and events, improving brand consistency and engagement across digital platforms.",
+    id: "Multi-Vendor E-Commerce",
+    title: "Multi-Vendor E-Commerce",
+    description: "MeaW | Multi-Vendor E-Commerce.",
     techStack: ["Canva", "Graphic Design", "Branding"],
-    link: "#", // 🔗 ADD YOUR LIVE LINK HERE
+    link: "https://i.imgur.com/TR5Zhpn.jpeg", // 🔗 ADD YOUR LIVE LINK HERE
     githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE (optional for design projects)
-    image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+    image: "https://i.imgur.com/X1z5NhW.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+    category: "uiux",
+  },
+  {
+    id: "Travel-Agency",
+    title: "Travel-Agency",
+    description:
+      "one stop provider for all your travel needs and requirements. .",
+    techStack: ["Canva", "Graphic Design", "Branding"],
+    link: "https://i.imgur.com/Nh8ZLQD.jpeg", // 🔗 ADD YOUR LIVE LINK HERE
+    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE (optional for design projects)
+    image: "https://i.imgur.com/9CdrPCc.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "uiux",
   },
 
@@ -139,15 +147,14 @@ export const projects: Project[] = [
     category: "web",
   },
   {
-    id: "student-dropout-prediction",
-    title: "Student Dropout Prediction System",
+    id: "MeaW | Multi-Vendor E-Commerce",
+    title: "MeaW | Multi-Vendor E-Commerce",
     description:
-      "Developed a data-driven solution to identify at-risk students early. Uses ML models to analyze academic patterns and predict dropout probability with high accuracy.",
-    techStack: ["Python", "ML", "Streamlit", "Data Mining"],
-    link: "https://student-dropout-web.streamlit.app/", // ✅ Live Streamlit link
-    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+      "Developed a scalable multi-vendor e-commerce platform enabling seamless product management, secure transactions, and user-centric shopping experiences across multiple sellers.",
+    techStack: ["React", "Vite", "TypeScript", "Zustand", "Tailwind CSS"],
+    link: "https://multi-vendor-e-commerce.netlify.app/", // ✅ Live Streamlit link
+    githubLink: "https://github.com/Shourov6/Multi-Vendor-E-Commerce", // 🔗 ADD YOUR GITHUB LINK HERE
+    image: "https://i.imgur.com/8qXXoZ1.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "web",
   },
   {

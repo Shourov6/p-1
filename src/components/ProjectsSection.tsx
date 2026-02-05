@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Palette, Globe, Code2, Brain, Sparkles, Star, Trophy, Rocket, Award, Target, Zap, CheckCircle } from "lucide-react";
 import {
@@ -173,6 +173,8 @@ const ImpactCard = ({ item }: { item: typeof impactItems[0] }) => {
 
 interface ProjectsSectionProps {
   projects?: Project[];
+  selectedCategory?: string | null;
+  onCategoryChange?: (category: string | null) => void;
 }
 
 type FilterType = "all" | "uiux" | "cms" | "web" | "aiml";
@@ -231,8 +233,45 @@ const filterTabs: { key: FilterType; label: string }[] = [
 
 const ProjectsSection = ({
   projects: projectsProp = projects,
+  selectedCategory,
+  onCategoryChange,
 }: ProjectsSectionProps) => {
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+
+  // Map dropdown category IDs to filter types
+  const categoryMapping: Record<string, FilterType> = {
+    "ui-ux": "uiux",
+    "cms": "cms",
+    "web": "web",
+    "ai-ml": "aiml",
+  };
+
+  // Update filter when selectedCategory changes from dropdown
+  useEffect(() => {
+    if (selectedCategory) {
+      console.log('Selected category received:', selectedCategory);
+      const mappedCategory = categoryMapping[selectedCategory];
+      console.log('Mapped to filter:', mappedCategory);
+      if (mappedCategory) {
+        setActiveFilter(mappedCategory);
+      }
+    }
+  }, [selectedCategory]);
+
+  const handleFilterChange = (filter: FilterType) => {
+    setActiveFilter(filter);
+    if (onCategoryChange) {
+      // Map back to dropdown category ID format
+      const reverseCategoryMapping: Record<FilterType, string | null> = {
+        "all": null,
+        "uiux": "ui-ux",
+        "cms": "cms",
+        "web": "web",
+        "aiml": "ai-ml",
+      };
+      onCategoryChange(reverseCategoryMapping[filter]);
+    }
+  };
 
   const filteredProjects = activeFilter === "all" 
     ? projectsProp 
@@ -248,7 +287,7 @@ const ProjectsSection = ({
   return (
     <section
       className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 w-full relative overflow-hidden"
-      id="projects"
+      id="projects-section"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0">
@@ -324,7 +363,7 @@ const ProjectsSection = ({
           {filterTabs.map((tab) => (
             <Button
               key={tab.key}
-              onClick={() => setActiveFilter(tab.key)}
+              onClick={() => handleFilterChange(tab.key)}
               variant={activeFilter === tab.key ? "default" : "outline"}
               className={`
                 px-6 py-2 rounded-full transition-all duration-300
