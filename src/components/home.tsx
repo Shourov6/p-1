@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Figma } from "lucide-react";
+import { Mail, Linkedin, Github, Figma, ChevronDown } from "lucide-react";
 import HeroSection from "./HeroSection";
 import ProjectsSection from "./ProjectsSection";
 import SectionsContainer from "./SectionsContainer";
@@ -8,6 +8,30 @@ import SectionsContainer from "./SectionsContainer";
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const projectsSectionRef = useRef<HTMLDivElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Track scroll position for header transparency
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('#hero-section');
+      if (heroSection) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        setIsScrolled(heroBottom < 80); // When hero is scrolled past
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const projectCategories = [
+    { id: 'all', name: 'All Projects', value: null },
+    { id: 'uiux', name: 'UI/UX Design', value: 'uiux' },
+    { id: 'cms', name: 'CMS Projects', value: 'cms' },
+    { id: 'web', name: 'Web Development', value: 'web' },
+    { id: 'aiml', name: 'AI/ML Projects', value: 'aiml' },
+  ];
   
   // Template handlers - update these with actual functionality later
   const handleHeaderEmailClick = () => {
@@ -82,47 +106,151 @@ const Home = () => {
     });
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div
-          className="text-2xl text-[#22d3ee] italic"
-          style={{ fontFamily: "'Great Vibes', cursive" }}
-        >
-          ASR
-        </div>
-        <div className={"flex space-x-4"}>
-          <button
-            className={"hover:text-orange-400 transition-colors"}
-            onClick={() => console.log("onClick")}
+      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-gray-900/70 backdrop-blur-md border-gray-800/50' 
+          : 'bg-gray-900/95 backdrop-blur-md border-gray-800'
+      }`}>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div
+            className="text-2xl text-[#22d3ee] italic cursor-pointer"
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <Mail size={20}></Mail>
-          </button>
-          <button
-            className={"hover:text-orange-400 transition-colors"}
-            onClick={() => console.log("onClick")}
-          >
-            <Linkedin size={20}></Linkedin>
-          </button>
-          <button
-            className={"hover:text-orange-400 transition-colors"}
-            onClick={() => console.log("onClick")}
-          >
-            <Github size={20}></Github>
-          </button>
-          <button
-            className={"hover:text-orange-400 transition-colors"}
-            onClick={() => console.log("onClick")}
-          >
-            <Figma size={20}></Figma>
-          </button>
+            ASR
+          </div>
+          
+          {/* Navigation Menu */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection("about-section")}
+              className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium"
+            >
+              About
+            </button>
+            
+            {/* Projects Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
+            >
+              <button
+                onClick={() => {
+                  scrollToSection("projects-section");
+                  setIsDropdownOpen(false);
+                }}
+                className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium flex items-center gap-1 py-2"
+              >
+                Projects
+                <ChevronDown size={16} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Dropdown Menu - pt-2 creates invisible bridge between button and menu */}
+              {isDropdownOpen && (
+                <div className="absolute top-full left-0 w-48 pt-2">
+                  <div 
+                    className="bg-gray-900/95 backdrop-blur-md border border-gray-800 rounded-lg shadow-xl overflow-hidden"
+                  >
+                    {projectCategories.map((category) => (
+                      <button
+                        key={category.id}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setSelectedCategory(category.value);
+                          scrollToSection("projects-section");
+                          setIsDropdownOpen(false);
+                        }}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition-colors cursor-pointer"
+                      >
+                        {category.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            <button
+              onClick={() => scrollToSection("experience-section")}
+              className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium"
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => scrollToSection("expertise-section")}
+              className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium"
+            >
+              Expertise
+            </button>
+            <button
+              onClick={() => scrollToSection("contact-section")}
+              className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium"
+            >
+              Contact
+            </button>
+          </nav>
+
+          {/* Social Icons */}
+          <div className="flex space-x-4">
+            <button
+              className="hover:text-orange-400 transition-colors"
+              onClick={handleHeaderEmailClick}
+            >
+              <Mail size={20} />
+            </button>
+            <button
+              className="hover:text-orange-400 transition-colors"
+              onClick={handleHeaderLinkedInClick}
+            >
+              <Linkedin size={20} />
+            </button>
+            <button
+              className="hover:text-orange-400 transition-colors"
+              onClick={handleHeaderGitHubClick}
+            >
+              <Github size={20} />
+            </button>
+            <button
+              className="hover:text-orange-400 transition-colors"
+              onClick={handleHeaderFigmaClick}
+            >
+              <Figma size={20} />
+            </button>
+          </div>
         </div>
       </header>
+      
+      {/* Spacer for fixed header */}
+      <div className="h-16"></div>
       {/* Hero Section */}
-      <HeroSection onScrollToAbout={handleScrollToAbout} onScrollToProjects={handleScrollToProjects} />
+      <div id="hero-section">
+        <HeroSection onScrollToAbout={handleScrollToAbout} onScrollToProjects={handleScrollToProjects} />
+      </div>
       {/* About Me Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="about-section" className="container mx-auto px-4 py-20">
         <div className="flex flex-col md:flex-row gap-10 items-center">
           <div className="w-full md:w-1/3">
             <div className="rounded-xl overflow-hidden shadow-lg">
@@ -230,7 +358,7 @@ const Home = () => {
       {/* Other Sections Container */}
       <SectionsContainer />
       {/* Call to Action Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900 relative overflow-hidden">
+      <section id="contact-section" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-1/4 w-64 h-64 bg-neon-blue/10 rounded-full blur-3xl animate-pulse-slow"></div>
           <div

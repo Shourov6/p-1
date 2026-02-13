@@ -12,41 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { projects, type Project } from "@/data/projects";
 
-// Featured Case Studies Data
-const featuredCaseStudies = [
-  {
-    id: "student-dropout-case",
-    title: "Student Dropout Prediction System",
-    problem: "Educational institutions struggle to identify at-risk students early enough to intervene.",
-    solution: "Built a data mining application using ML models to analyze academic patterns and predict dropout risks with high accuracy.",
-    tools: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
-    outcome: "Deployed live on Streamlit with real-time prediction capabilities for institutional use.",
-    link: "https://student-dropout-web.streamlit.app/",
-    icon: Target,
-    color: "blue",
-  },
-  {
-    id: "breast-cancer-case",
-    title: "Breast Cancer Detection System",
-    problem: "Early detection of breast cancer is critical but manual diagnosis is time-consuming and error-prone.",
-    solution: "Developed CNN-based image classification system to assist medical professionals in faster, more accurate diagnosis.",
-    tools: ["Python", "TensorFlow", "CNN", "Medical Imaging"],
-    outcome: "Achieved high accuracy in classification, contributing to AI-assisted healthcare research.",
-    icon: Zap,
-    color: "purple",
-  },
-  {
-    id: "currency-recognition-case",
-    title: "Bangladeshi Currency Recognition",
-    problem: "Visually impaired individuals face challenges in identifying currency denominations independently.",
-    solution: "Created deep learning-based recognition system integrated into an Android app for real-time currency identification.",
-    tools: ["PyTorch", "CNN", "Jetpack Compose", "Android"],
-    outcome: "Functional mobile app providing accessibility solution for the visually impaired community.",
-    icon: Award,
-    color: "orange",
-  },
-];
-
 // Impact & Achievements Data
 const impactItems = [
   {
@@ -76,7 +41,7 @@ const impactItems = [
 ];
 
 // Case Study Card Component
-const CaseStudyCard = ({ caseStudy }: { caseStudy: typeof featuredCaseStudies[0] }) => {
+const CaseStudyCard = ({ caseStudy }: { caseStudy: any }) => {
   const Icon = caseStudy.icon;
   const colorClasses = {
     blue: { border: "border-blue-500/50", bg: "from-blue-500/20 to-cyan-500/20", text: "text-blue-400" },
@@ -315,41 +280,6 @@ const ProjectsSection = ({
             A showcase of my technical projects and applications, demonstrating
             my skills and expertise across different domains.
           </p>
-        </motion.div>
-
-        {/* Featured Case Studies Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/50">
-              <Star className="text-yellow-400" size={28} />
-            </div>
-            <div>
-              <h3 className="text-3xl font-bold text-white flex items-center gap-2">
-                Featured Case Studies
-                <Sparkles className="text-yellow-400" size={20} />
-              </h3>
-              <p className="text-gray-400">In-depth look at key projects and their impact</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCaseStudies.map((caseStudy, index) => (
-              <motion.div
-                key={caseStudy.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <CaseStudyCard caseStudy={caseStudy} />
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
         {/* Filter Tabs */}

@@ -335,7 +335,8 @@ const SectionsContainer = () => {
         </Section>
 
         {/* Experience Section */}
-        <Section title="Experience" icon={<Briefcase size={24} />}>
+        <div id="experience-section">
+          <Section title="Experience" icon={<Briefcase size={24} />}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ExperienceCard
               title="Freelancer (Fiverr)"
@@ -357,6 +358,7 @@ const SectionsContainer = () => {
             />
           </div>
         </Section>
+        </div>
 
         {/* Leadership Section */}
         <Section title="Leadership & Activities" icon={<Users size={24} />}>
@@ -434,7 +436,8 @@ const SectionsContainer = () => {
         </Section>
 
         {/* Skills Section */}
-        <Section title="Skills & Tools" icon={<Wrench size={24} />}>
+        <div id="expertise-section">
+          <Section title="Skills & Tools" icon={<Wrench size={24} />}>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
             <SkillIcon name="Python" icon={<i className="text-2xl">🐍</i>} />
             <SkillIcon name="Java" icon={<i className="text-2xl">☕</i>} />
@@ -456,6 +459,7 @@ const SectionsContainer = () => {
             <SkillIcon name="Office" icon={<i className="text-2xl">📊</i>} />
           </div>
         </Section>
+        </div>
 
         <Separator className="my-8 bg-gray-800" />
       </div>
