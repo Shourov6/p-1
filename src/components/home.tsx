@@ -47,8 +47,7 @@ const Home = () => {
   };
 
   const handleHeaderFigmaClick = () => {
-    console.log("Header Figma clicked");
-    // Add Figma functionality here
+    window.open("https://www.behance.net/asrshourov", "_blank");
   };
 
   const handleAboutEmailClick = () => {
@@ -64,8 +63,7 @@ const Home = () => {
   };
 
   const handleAboutBehanceClick = () => {
-    console.log("About Behance clicked");
-    // Add Behance functionality here
+    window.open("https://www.behance.net/asrshourov", "_blank");
   };
 
   const handleFooterLinkedInClick = () => {
@@ -77,33 +75,61 @@ const Home = () => {
   };
 
   const handleFooterFigmaClick = () => {
-    console.log("Footer Figma clicked");
-    // Add Figma functionality here
+    window.open("https://www.behance.net/asrshourov", "_blank");
   };
 
   const handleFooterEmailClick = () => {
-    console.log("Footer Email clicked");
-    // Add email functionality here
+    window.location.href = "mailto:asrshourov@gmail.com";
   };
 
   const handleScrollToAbout = () => {
-    console.log("Scroll to About clicked");
-    // Add scroll functionality here
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const handleScrollToProjects = (category?: string) => {
+    // Map category IDs from Hero/Header to internal filter types
+    const categoryMapping: Record<string, string> = {
+      'ui-ux': 'uiux',
+      'cms': 'cms',
+      'web': 'web',
+      'ai-ml': 'aiml',
+    };
+    
+    // If category is provided, set it and scroll to that specific category section
     if (category) {
-      setSelectedCategory(category);
+      const mappedCategory = categoryMapping[category] || category;
+      setSelectedCategory(mappedCategory);
+      // Wait for state update and scroll to specific category section
+      setTimeout(() => {
+        const categorySection = document.getElementById(`category-${mappedCategory}`);
+        if (categorySection) {
+          const yOffset = -100;
+          const y = categorySection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        } else {
+          // Fallback to projects section if category section not found
+          const projectsElement = document.getElementById('projects-section');
+          if (projectsElement) {
+            const yOffset = -20;
+            const y = projectsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }
+      }, 150);
+    } else {
+      // No category - just scroll to projects section
+      requestAnimationFrame(() => {
+        const projectsElement = document.getElementById('projects-section');
+        if (projectsElement) {
+          const yOffset = -20;
+          const y = projectsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
     }
-    // Immediate scroll - no delay needed
-    requestAnimationFrame(() => {
-      const projectsElement = document.getElementById('projects-section');
-      if (projectsElement) {
-        const yOffset = -20; // Slight offset from top
-        const y = projectsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    });
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -176,7 +202,15 @@ const Home = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          setSelectedCategory(category.value);
+                          // Map the header category ID to the internal format
+                          const categoryMapping: Record<string, string> = {
+                            'uiux': 'uiux',
+                            'cms': 'cms',
+                            'web': 'web',
+                            'aiml': 'aiml',
+                          };
+                          const mappedValue = category.value ? categoryMapping[category.value] || category.value : null;
+                          setSelectedCategory(mappedValue);
                           scrollToSection("projects-section");
                           setIsDropdownOpen(false);
                         }}

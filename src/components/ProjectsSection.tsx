@@ -140,6 +140,7 @@ interface ProjectsSectionProps {
   projects?: Project[];
   selectedCategory?: string | null;
   onCategoryChange?: (category: string | null) => void;
+  showAllProjects?: boolean;
 }
 
 type FilterType = "all" | "uiux" | "cms" | "web" | "aiml";
@@ -200,8 +201,10 @@ const ProjectsSection = ({
   projects: projectsProp = projects,
   selectedCategory,
   onCategoryChange,
+  showAllProjects = false,
 }: ProjectsSectionProps) => {
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
   // Map dropdown category IDs to filter types
   const categoryMapping: Record<string, FilterType> = {
@@ -247,6 +250,18 @@ const ProjectsSection = ({
     cms: filteredProjects.filter(p => p.category === "cms"),
     web: filteredProjects.filter(p => p.category === "web"),
     aiml: filteredProjects.filter(p => p.category === "aiml"),
+  };
+
+  const toggleCategoryExpansion = (category: string) => {
+    setExpandedCategories(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(category)) {
+        newSet.delete(category);
+      } else {
+        newSet.add(category);
+      }
+      return newSet;
+    });
   };
 
   return (
@@ -324,9 +339,14 @@ const ProjectsSection = ({
               
               const config = categoryConfig[category];
               const Icon = config.icon;
+              
+              // Show first 3 projects by default, unless expanded or showAllProjects is true
+              const isExpanded = expandedCategories.has(category) || showAllProjects;
+              const displayedProjects = isExpanded ? projectsInCategory : projectsInCategory.slice(0, 3);
+              const hasMore = projectsInCategory.length > 3;
 
               return (
-                <div key={category} className="relative">
+                <div key={category} className="relative" id={`category-${category}`}>
                   {/* Category Header */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -335,26 +355,40 @@ const ProjectsSection = ({
                     viewport={{ once: true }}
                     className="mb-8"
                   >
-                    <div className={`flex items-center gap-4 mb-2 ${config.glow ? "relative" : ""}`}>
-                      {config.glow && (
-                        <div className="absolute -inset-4 bg-purple-500/20 blur-xl rounded-full opacity-50"></div>
+                    <div className={`flex items-center justify-between mb-2`}>
+                      <div className={`flex items-center gap-4 ${config.glow ? "relative" : ""}`}>
+                        {config.glow && (
+                          <div className="absolute -inset-4 bg-purple-500/20 blur-xl rounded-full opacity-50"></div>
+                        )}
+                        <div className={`p-3 rounded-xl bg-gradient-to-br ${config.gradient} border ${config.borderColor} relative`}>
+                          <Icon className={config.textColor} size={28} />
+                        </div>
+                        <div className="relative">
+                          <h3 className="text-3xl font-bold text-white flex items-center gap-2">
+                            {config.title}
+                            {config.glow && <Sparkles className="text-purple-400" size={20} />}
+                          </h3>
+                          <p className="text-gray-400">{config.subtitle}</p>
+                        </div>
+                      </div>
+                      
+                      {/* View All Button (only show if more than 3 projects and not in showAllProjects mode) */}
+                      {hasMore && !showAllProjects && (
+                        <Button
+                          onClick={() => toggleCategoryExpansion(category)}
+                          variant="outline"
+                          size="sm"
+                          className={`flex items-center gap-2 ${config.borderColor} ${config.textColor} ${config.bgHover} transition-all duration-300`}
+                        >
+                          {isExpanded ? "Show Less" : `View All (${projectsInCategory.length})`}
+                        </Button>
                       )}
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${config.gradient} border ${config.borderColor} relative`}>
-                        <Icon className={config.textColor} size={28} />
-                      </div>
-                      <div className="relative">
-                        <h3 className="text-3xl font-bold text-white flex items-center gap-2">
-                          {config.title}
-                          {config.glow && <Sparkles className="text-purple-400" size={20} />}
-                        </h3>
-                        <p className="text-gray-400">{config.subtitle}</p>
-                      </div>
                     </div>
                   </motion.div>
 
                   {/* Project Cards Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projectsInCategory.map((project, index) => (
+                    {displayedProjects.map((project, index) => (
                       <motion.div
                         key={project.id}
                         initial={{ opacity: 0, y: 20 }}
@@ -366,6 +400,26 @@ const ProjectsSection = ({
                       </motion.div>
                     ))}
                   </div>
+                  
+                  {/* See More Button Below Cards (mobile-friendly) */}
+                  {hasMore && !showAllProjects && !isExpanded && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                      viewport={{ once: true }}
+                      className="flex justify-center mt-8"
+                    >
+                      <Button
+                        onClick={() => toggleCategoryExpansion(category)}
+                        variant="outline"
+                        size="lg"
+                        className={`flex items-center gap-2 ${config.borderColor} ${config.textColor} ${config.bgHover} hover:shadow-lg transition-all duration-300 px-8`}
+                      >
+                        See More ({projectsInCategory.length - 3} more)
+                      </Button>
+                    </motion.div>
+                  )}
                 </div>
               );
             })}
