@@ -80,29 +80,47 @@ const HeroSection = ({ onScrollToAbout = () => {}, onScrollToProjects = () => {}
             SHOUROV
           </motion.h1>
 
-          <motion.h2
-            className="text-xl md:text-2xl text-blue-400 mb-4 font-semibold"
+          {/* Animated Role Badges */}
+          <motion.div
+            className="flex flex-wrap gap-3 mb-5"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            AI & Machine Learning · Full-Stack Web Development · Real-World Solutions
-          </motion.h2>
+            {[
+              { label: "UI/UX Designer", color: "from-pink-500/60 to-rose-400/60", icon: "✦" },
+              { label: "Full-Stack Web Developer", color: "from-blue-500/60 to-cyan-400/60", icon: "⚡" },
+              { label: "AI / ML Enthusiast", color: "from-purple-500/60 to-violet-400/60", icon: "🧠" },
+            ].map((role, i) => (
+              <motion.span
+                key={role.label}
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm md:text-base font-semibold text-white bg-gradient-to-r ${role.color} shadow-lg shadow-black/20 cursor-default select-none`}
+                style={{ opacity: 0.85 }}
+              >
+                <span className="text-xs">{role.icon}</span>
+                {role.label}
+              </motion.span>
+            ))}
+          </motion.div>
 
           <motion.p
-            className="text-lg md:text-xl text-gray-300 mb-8 font-medium max-w-xl"
+            className="text-lg md:text-xl text-gray-300 mb-8 font-medium max-w-xl leading-relaxed"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Building intelligent applications that solve real problems — from ML-powered prediction systems to custom web platforms for global clients.
+            Crafting pixel-perfect interfaces, building scalable web platforms, and exploring intelligent systems — turning ideas into impactful digital experiences.
           </motion.p>
 
           <motion.div
             className="flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             {/* View Projects Dropdown Button */}
             <div className="relative" ref={dropdownRef}>

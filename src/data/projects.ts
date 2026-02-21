@@ -31,11 +31,33 @@ export interface Project {
 export const projects: Project[] = [
   // UI/UX & Design Projects
   {
+    id: "Education Site",
+    title: "Education Site - UI/UX",
+    description:
+      "The Skillup UI/UX is a masterclass in modern, high-energy design. It blends a dark-mode aesthetic with vibrant gradients to create a professional yet creative workspace.",
+    techStack: ["Figma", "UI/UX", "Prototyping"],
+    link: "https://www.figma.com/design/Cn26jh1v1Swh4MxBZse0IA/Demo-1?node-id=0-1&t=Ysuw7mpTzRnAM86t-1", // 🔗 ADD YOUR LIVE LINK HERE
+    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
+    image: "https://i.imgur.com/iv01PSL.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+    category: "uiux",
+  },
+  {
+    id: "Tech e-comerce",
+    title: "Tech E-comerce- UI/UX",
+    description:
+      "The one-stop soluttion's UI/UX is a masterclass in modern, high-energy design. It blends aesthetic with vibrant gradients to create a professional yet creative workspace.",
+    techStack: ["Figma", "UI/UX", "Prototyping"],
+    link: "https://www.figma.com/proto/r1HdzOE3ZqLWxrVOHhXgLZ/demo-2?node-id=34-213&p=f&t=ekFTkd1SYRom0iw1-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A3&starting-point-node-id=34%3A213", // 🔗 ADD YOUR LIVE LINK HERE
+    githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
+    image: "https://i.imgur.com/DK02HMg.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
+    category: "uiux",
+  },
+  {
     id: "portfolio-ui-design",
-    title: "Portfolio UI Design",
+    title: "Portfolio UI Design- UI/UX",
     description:
       "Designed a modern dark-themed developer portfolio solving the problem of generic templates. Features responsive layouts and intuitive navigation for optimal user experience.",
-    techStack: ["Figma", "UI/UX", "Prototyping"],
+    techStack: ["Canva"],
     link: "#", // 🔗 ADD YOUR LIVE LINK HERE
     githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
     image:
@@ -44,32 +66,32 @@ export const projects: Project[] = [
   },
   {
     id: "E-commerce website for hair care products and treatments",
-    title: "E-commerce website for hair care products and treatments",
+    title: "Hair care products and treatments- UI/UX",
     description:
       "Created accessible mobile UI layouts addressing navigation complexity in mobile apps. Implements Material Design principles for consistent cross-platform experience.",
     techStack: ["Flutter", "Material UI", "Dart"],
-    link: "https://i.imgur.com/lZhA4R0.jpeg", // 🔗 ADD YOUR LIVE LINK HERE
+    link: "https://www.behance.net/gallery/244368549/Hair-service", // 🔗 ADD YOUR LIVE LINK HERE
     githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE
     image: "https://i.imgur.com/44UWAMY.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "uiux",
   },
   {
     id: "Multi-Vendor E-Commerce",
-    title: "Multi-Vendor E-Commerce",
+    title: "Multi-Vendor E-Commerce- UI/UX",
     description: "MeaW | Multi-Vendor E-Commerce.",
     techStack: ["Canva", "Graphic Design", "Branding"],
-    link: "https://i.imgur.com/TR5Zhpn.jpeg", // 🔗 ADD YOUR LIVE LINK HERE
+    link: "https://www.behance.net/gallery/244369729/Multi-vendor-e-ecomerce", // 🔗 ADD YOUR LIVE LINK HERE
     githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE (optional for design projects)
     image: "https://i.imgur.com/X1z5NhW.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "uiux",
   },
   {
     id: "Travel-Agency",
-    title: "Travel-Agency",
+    title: "Travel-Agency- UI/UX",
     description:
       "one stop provider for all your travel needs and requirements. .",
-    techStack: ["Canva", "Graphic Design", "Branding"],
-    link: "https://i.imgur.com/Nh8ZLQD.jpeg", // 🔗 ADD YOUR LIVE LINK HERE
+    techStack: ["WIX"],
+    link: "https://www.behance.net/gallery/244368899/Travel-agency", // 🔗 ADD YOUR LIVE LINK HERE
     githubLink: "#", // 🔗 ADD YOUR GITHUB LINK HERE (optional for design projects)
     image: "https://i.imgur.com/9CdrPCc.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "uiux",
@@ -81,7 +103,7 @@ export const projects: Project[] = [
     title: "TexHair",
     description:
       "Professional e-commerce website for hair care products and treatments. Features product catalog, service booking, and modern shopping experience.",
-    techStack: ["Wix", "E-Commerce", "SEO", "Responsive Design"],
+    techStack: ["Wix", "E-Commerce", "Responsive Design"],
     link: "https://sourob123theking.wixstudio.com/my-site-1",
     githubLink: "#", // N/A for Wix projects
     image: "https://i.imgur.com/be99Ye6.png",
@@ -92,7 +114,7 @@ export const projects: Project[] = [
     title: "JetLink Travels",
     description:
       "Travel arrangement company website with tour packages, booking system, and destination showcases for seamless travel planning experience.",
-    techStack: ["Wix", "Travel", "Booking System", "UI Design"],
+    techStack: ["Wix", "Travel", "Booking System"],
     link: "https://asrshourov999.wixstudio.com/my-site-1",
     githubLink: "#", // N/A for Wix projects
     image: "https://i.postimg.cc/sXcSGCVC/Screenshot-2026-01-21-184521.png",
@@ -119,18 +141,6 @@ export const projects: Project[] = [
     githubLink: "#", // N/A for Squarespace projects
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
-    category: "cms",
-  },
-  {
-    id: "landing-pages-webflow",
-    title: "Landing Pages – Webflow",
-    description:
-      "Created high-conversion landing pages with advanced animations, helping businesses improve lead generation and user engagement.",
-    techStack: ["Webflow", "CMS", "Animations"],
-    link: "#", // 🔗 ADD YOUR LIVE LINK HERE
-    githubLink: "#", // N/A for Webflow projects
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "cms",
   },
 
