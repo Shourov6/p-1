@@ -11,7 +11,7 @@ interface AboutSectionProps {
 }
 
 const AboutSection = ({
-  profileImage = "https://i.imgur.com/Uu1q9hL.jpeg",
+  profileImage = "https://i.imgur.com/827jqLg.png",
   name = "Shourov",
   description = "I'm Shourov, a Computer Science graduate from Green University of Bangladesh, passionate about building intelligent solutions that make a real impact. I have hands-on experience in web development, having delivered professional websites using Wix and Squarespace for clients worldwide, as well as building full-stack web applications.\n\nMy passion lies in Artificial Intelligence and Machine Learning — I've developed prediction systems for healthcare, built deep learning models for currency recognition, and deployed ML-powered web applications. I combine academic knowledge with practical development to create solutions that solve real-world problems.\n\nOpen to freelance work, research collaboration, and AI/ML projects. Let's build something innovative and impactful together.",
   highlightText = "Let's collaborate and create something innovative and impactful.",

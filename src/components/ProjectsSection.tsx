@@ -266,7 +266,7 @@ const ProjectsSection = ({
 
   return (
     <section
-      className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 w-full relative overflow-hidden"
+      className="py-16 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 w-full relative overflow-hidden"
       id="projects-section"
     >
       {/* Background decorative elements */}
@@ -290,7 +290,7 @@ const ProjectsSection = ({
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-400 to-indigo-600 bg-clip-text text-transparent">Projects</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-400 to-indigo-600 bg-clip-text text-transparent">Projects</h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
             A showcase of my technical projects and applications, demonstrating
             my skills and expertise across different domains.
@@ -355,7 +355,7 @@ const ProjectsSection = ({
                     viewport={{ once: true }}
                     className="mb-8"
                   >
-                    <div className={`flex items-center justify-between mb-2`}>
+                    <div className={`flex items-center justify-between flex-wrap gap-3 mb-2`}>
                       <div className={`flex items-center gap-4 ${config.glow ? "relative" : ""}`}>
                         {config.glow && (
                           <div className="absolute -inset-4 bg-purple-500/20 blur-xl rounded-full opacity-50"></div>
@@ -364,7 +364,7 @@ const ProjectsSection = ({
                           <Icon className={config.textColor} size={28} />
                         </div>
                         <div className="relative">
-                          <h3 className="text-3xl font-bold text-white flex items-center gap-2">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white flex items-center gap-2">
                             {config.title}
                             {config.glow && <Sparkles className="text-purple-400" size={20} />}
                           </h3>

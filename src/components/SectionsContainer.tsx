@@ -44,7 +44,7 @@ const Section = ({ title, icon, children }: SectionProps) => {
         <div className="p-3 rounded-full bg-gradient-to-r from-neon-blue/20 to-neon-purple/20 text-neon-blue border border-neon-blue/30 shadow-lg shadow-neon-blue/25">
           {icon}
         </div>
-        <h2 className="text-3xl font-bold text-gradient">{title}</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gradient">{title}</h2>
       </div>
       {children}
     </motion.div>
@@ -230,7 +230,7 @@ const SectionsContainer = () => {
   ];
 
   return (
-    <div className="w-full bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900 text-white py-16 relative overflow-hidden">
+    <div className="w-full bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900 text-white py-12 md:py-16 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-neon-purple/5 rounded-full blur-3xl animate-pulse-slow"></div>
@@ -248,7 +248,7 @@ const SectionsContainer = () => {
         {/* Impact & Achievements Section */}
         <Section title="Impact & Achievements" icon={<TrendingUp size={24} />}>
           <p className="text-gray-300 mb-8">Highlights of my professional journey</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="bg-gradient-to-br from-neon-blue/10 to-neon-purple/10 border-neon-blue/30 hover:border-neon-blue/60 transition-all duration-500 hover-lift glass-effect group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <CardContent className="p-6 relative z-10 text-center">
@@ -339,39 +339,83 @@ const SectionsContainer = () => {
           <Section title="Experience" icon={<Briefcase size={24} />}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ExperienceCard
+              title="O'Dell Tech, Mirpur DOHS"
+              role="Full Stack Software Development Intern"
+              duration="Feb 2026 – Present"
+              description="Served as team leader for both development and UI/UX design teams. Developed and maintained full-stack web applications using modern technologies. Integrated machine learning models to improve data-driven decision-making and application performance."
+            />
+            <ExperienceCard
+              title="Center for Career Development (CCD), Green University of Bangladesh"
+              role="Data Analyst"
+              duration="Jul 2025 – Mar 2026"
+              description="Gathered and analyzed course curriculum data, ensuring accuracy and up-to-date records. Maintained and updated academic databases, improving data consistency. Collaborated with faculty and administrative teams to streamline curriculum management."
+            />
+            <ExperienceCard
               title="Freelancer (Fiverr)"
               role="Web Developer (Wix & Squarespace)"
               duration="2021–Present"
               description="Delivered professional websites for international clients, focusing on responsive design, SEO optimization, and brand-focused layouts."
             />
-            <ExperienceCard
-              title="Academic Research Projects"
-              role="Machine Learning & AI"
-              duration="2022–Present"
-              description="Developed ML models for healthcare applications including breast cancer detection, Parkinson's prediction, and currency recognition systems."
-            />
-            <ExperienceCard
-              title="Team Projects"
-              role="Android Apps & Web Platforms"
-              duration="University Projects"
-              description="Collaborated on full-stack web applications and Android development projects, applying software engineering best practices."
-            />
           </div>
         </Section>
         </div>
+
+        {/* Professional Training Section */}
+        <Section title="Professional Training" icon={<Award size={24} />}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <ExperienceCard
+              title="Codemanbd"
+              role="Wix and Webflow"
+              duration="Jan 2022 – Jul 2022"
+              description="Professional training in CMS-based web development using Wix and Webflow platforms."
+            />
+            <ExperienceCard
+              title="Creative IT Institute"
+              role="Professional UI/UX Design"
+              duration="Feb 2024 – May 2024"
+              description="Comprehensive UI/UX design training covering user research, wireframing, prototyping, and visual design principles."
+            />
+            <ExperienceCard
+              title="Codemanbd"
+              role="Full Stack Web Development"
+              duration="Apr 2025 – Jan 2026"
+              description="Intensive full-stack web development training covering modern frameworks, databases, and deployment strategies."
+            />
+          </div>
+        </Section>
 
         {/* Leadership Section */}
         <Section title="Leadership & Activities" icon={<Users size={24} />}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <LeadershipCard
-              title="Green University Club for Languages"
+              title="Green University Club for Languages (GUCL)"
               role="President"
-              description="Leading initiatives to promote language learning and cultural exchange among students, organizing workshops and events."
+              description="Mar 2025 – Present | Leading initiatives to promote language learning and cultural exchange among students, organizing workshops and events."
             />
             <LeadershipCard
               title="Social Services & Blood Donation Club"
               role="Event Secretary"
-              description="Coordinating blood donation drives and community service events, making a positive impact on society."
+              description="Jan 2024 – Dec 2024 | Coordinated blood donation drives and community service events, making a positive impact on society."
+            />
+            <LeadershipCard
+              title="GUB Internships Fair & Career Expo 2025"
+              role="Volunteer"
+              description="Dec 2025 | Assisted in organizing the career expo, facilitating connections between students and industry professionals."
+            />
+            <LeadershipCard
+              title="Green Fest 2.0"
+              role="Event and Venue Management"
+              description="Nov 2025 | Managed event logistics, venue coordination, and ensured smooth execution of the university festival."
+            />
+            <LeadershipCard
+              title="Bangladesh Vision Summit 2024"
+              role="Volunteer"
+              description="Dec 2024 | Contributed to organizing and running one of Bangladesh's prominent national summits."
+            />
+            <LeadershipCard
+              title="NAT Test"
+              role="Volunteer & Invigilator"
+              description="Volunteer: Jul 2024 – May 2025 | Invigilator: Jun 2025 – Nov 2025 | Supported national assessment test operations ensuring integrity and smooth conduct."
             />
           </div>
         </Section>
@@ -380,9 +424,19 @@ const SectionsContainer = () => {
         <Section title="Education" icon={<BookOpen size={24} />}>
           <div className="grid grid-cols-1 gap-6">
             <EducationCard
-              institution="Green University of Bangladesh"
-              degree="B.Sc. in Computer Science & Engineering (Ongoing)"
-              courses="Machine Learning, Cryptography, Web Development"
+              institution="Green University of Bangladesh, Dhaka"
+              degree="B.Sc. in Computer Science & Engineering | Feb 2022 – Feb 2026"
+              courses="Machine Learning, Cryptography, Web Development, Data Structures & Algorithms, Database Management, Software Engineering"
+            />
+            <EducationCard
+              institution="Gazipur City College, Gazipur"
+              degree="Higher Secondary Certificate (HSC) – Science | Apr 2018 – Jul 2020"
+              courses="Physics, Chemistry, Mathematics, Biology"
+            />
+            <EducationCard
+              institution="Pirojali Adarsha High School, Gazipur"
+              degree="Secondary School Certificate (SSC) – Science | Jan 2013 – Feb 2018"
+              courses="Science, Mathematics, English, Bangla"
             />
           </div>
         </Section>
@@ -438,7 +492,7 @@ const SectionsContainer = () => {
         {/* Skills Section */}
         <div id="expertise-section">
           <Section title="Skills & Tools" icon={<Wrench size={24} />}>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-6">
             <SkillIcon name="Python" icon={<i className="text-2xl">🐍</i>} />
             <SkillIcon name="Java" icon={<i className="text-2xl">☕</i>} />
             <SkillIcon name="C++" icon={<i className="text-2xl">🔧</i>} />
@@ -448,18 +502,58 @@ const SectionsContainer = () => {
               name="JavaScript"
               icon={<i className="text-2xl">📜</i>}
             />
+            <SkillIcon name="TypeScript" icon={<i className="text-2xl">🔷</i>} />
+            <SkillIcon name="Bootstrap" icon={<i className="text-2xl">🅱️</i>} />
             <SkillIcon name="React" icon={<i className="text-2xl">⚛️</i>} />
             <SkillIcon name="Node.js" icon={<i className="text-2xl">🟢</i>} />
+            <SkillIcon name="Flask" icon={<i className="text-2xl">🧪</i>} />
+            <SkillIcon name="Django" icon={<i className="text-2xl">🌿</i>} />
+            <SkillIcon name="MySQL" icon={<i className="text-2xl">🗄️</i>} />
             <SkillIcon name="Figma" icon={<i className="text-2xl">🖌️</i>} />
-            <SkillIcon name="Photoshop" icon={<i className="text-2xl">📸</i>} />
-            <SkillIcon
-              name="Illustrator"
-              icon={<i className="text-2xl">✏️</i>}
-            />
-            <SkillIcon name="Office" icon={<i className="text-2xl">📊</i>} />
+            <SkillIcon name="PyTorch" icon={<i className="text-2xl">🔥</i>} />
+            <SkillIcon name="Scikit-learn" icon={<i className="text-2xl">📊</i>} />
+            <SkillIcon name="Streamlit" icon={<i className="text-2xl">🚀</i>} />
+            <SkillIcon name="OpenCV" icon={<i className="text-2xl">👁️</i>} />
+            <SkillIcon name="Git/GitHub" icon={<i className="text-2xl">🐙</i>} />
+            <SkillIcon name="Wix" icon={<i className="text-2xl">🔹</i>} />
+            <SkillIcon name="Squarespace" icon={<i className="text-2xl">◼️</i>} />
+            <SkillIcon name="Canva" icon={<i className="text-2xl">🖼️</i>} />
+            <SkillIcon name="Webflow" icon={<i className="text-2xl">🌊</i>} />
+            <SkillIcon name="Colab" icon={<i className="text-2xl">📓</i>} />
           </div>
         </Section>
         </div>
+
+        <Separator className="my-8 bg-gray-800" />
+
+        {/* Hobbies Section */}
+        <Section title="Hobbies & Interests" icon={<Lightbulb size={24} />}>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { label: "Web Technologies", icon: "🌐" },
+              { label: "AI & ML Trends", icon: "🧠" },
+              { label: "Blockchain & Cryptography", icon: "🔐" },
+              { label: "Reading Tech Articles", icon: "📚" },
+              { label: "Debating & Public Speaking", icon: "🎤" },
+              { label: "Creative Design (Canva)", icon: "🎨" },
+              { label: "Volunteering & Events", icon: "🤝" },
+              { label: "Football Analysis", icon: "⚽" },
+            ].map((hobby, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: i * 0.07 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.08, y: -2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-gray-800/70 to-gray-900/70 border border-gray-700/50 hover:border-neon-orange/50 text-gray-300 hover:text-white transition-all duration-300 cursor-default select-none"
+              >
+                <span className="text-base">{hobby.icon}</span>
+                {hobby.label}
+              </motion.span>
+            ))}
+          </div>
+        </Section>
 
         <Separator className="my-8 bg-gray-800" />
       </div>

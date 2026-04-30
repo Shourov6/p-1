@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowDownIcon, Briefcase, Download, Palette, Layout, Globe, Brain, ChevronDown } from "lucide-react";
-import FloatingCodeBackground from "./FloatingCodeBackground";
 
 interface HeroSectionProps {
   onScrollToAbout?: () => void;
@@ -48,22 +47,8 @@ const HeroSection = ({ onScrollToAbout = () => {}, onScrollToProjects = () => {}
   };
 
   return (
-    <section className="min-h-screen w-full flex items-center justify-between px-6 md:px-16 lg:px-24 py-20 relative overflow-hidden">
-      {/* Futuristic Floating Code Background */}
-      <FloatingCodeBackground />
-      {/* Additional glow orbs for depth */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/8 rounded-full blur-3xl animate-pulse-slow"
-          style={{ animationDelay: "2s" }}
-        ></div>
-      </div>
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+    <section className="min-h-screen w-full flex items-center justify-between px-4 sm:px-6 md:px-16 lg:px-24 py-16 md:py-20 relative overflow-hidden">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 relative z-10">
         {/* Left side - Text content */}
         <motion.div
           className="flex-1"
@@ -72,7 +57,7 @@ const HeroSection = ({ onScrollToAbout = () => {}, onScrollToProjects = () => {}
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 animate-glow w-[610px]"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient mb-4 animate-glow w-full max-w-[610px]"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -126,7 +111,7 @@ const HeroSection = ({ onScrollToAbout = () => {}, onScrollToProjects = () => {}
             <div className="relative" ref={dropdownRef}>
               <Button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white flex items-center gap-2 px-8 py-6 rounded-full text-lg font-semibold shadow-2xl hover-lift neon-glow shimmer-effect transition-all duration-300"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white flex items-center gap-2 px-6 py-4 md:px-8 md:py-6 rounded-full text-base md:text-lg font-semibold shadow-2xl hover-lift neon-glow shimmer-effect transition-all duration-300"
               >
                 View Projects 
                 <motion.span
@@ -208,39 +193,144 @@ const HeroSection = ({ onScrollToAbout = () => {}, onScrollToProjects = () => {}
             <Button
               onClick={handleHireMe}
               variant="outline"
-              className="border-2 border-neon-orange text-neon-orange hover:bg-neon-orange/20 flex items-center gap-2 px-8 py-6 rounded-full text-lg font-semibold hover-lift transition-all duration-300"
+              className="border-2 border-neon-orange text-neon-orange hover:bg-neon-orange/20 flex items-center gap-2 px-6 py-4 md:px-8 md:py-6 rounded-full text-base md:text-lg font-semibold hover-lift transition-all duration-300"
             >
               <Briefcase size={18} /> Hire Me
             </Button>
             <Button
               onClick={handleDownloadResume}
               variant="outline"
-              className="border-2 border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white hover:bg-gray-800/50 flex items-center gap-2 px-6 py-6 rounded-full text-lg font-semibold hover-lift transition-all duration-300"
+              className="border-2 border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white hover:bg-gray-800/50 flex items-center gap-2 px-5 py-4 md:px-6 md:py-6 rounded-full text-base md:text-lg font-semibold hover-lift transition-all duration-300"
             >
               <Download size={18} /> Resume
             </Button>
           </motion.div>
         </motion.div>
 
-        {/* Right side - Illustration */}
+        {/* Right side - Profile Photo with cool effect */}
         <motion.div
           className="flex-1 flex justify-center items-center"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <motion.div
-            className="relative"
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80"
-              alt="Character with lightbulb"
-              className="max-w-full h-auto rounded-3xl shadow-2xl glass-effect border-2 border-blue-500/50 hover-lift"
+          <div className="relative flex flex-col items-center justify-center gap-4">
+            {/* "Let's Talk" animated badge above the circle */}
+            <motion.div
+              className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/40 backdrop-blur-sm shadow-lg shadow-blue-500/20"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.08 }}
+            >
+              <motion.span
+                className="w-2 h-2 rounded-full bg-green-400"
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.2, repeat: Infinity }}
+              />
+              <span className="text-sm font-bold tracking-widest text-white uppercase">
+                {"Let's Talk".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block"
+                    animate={{ y: [0, -3, 0] }}
+                    transition={{
+                      duration: 0.8,
+                      repeat: Infinity,
+                      delay: i * 0.07 + 0.5,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </span>
+              <span className="text-base">👋</span>
+            </motion.div>
+
+            {/* Photo + rings wrapper */}
+            <div className="relative flex items-center justify-center">
+            {/* Rotating ring 1 */}
+            <motion.div
+              className="absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full border-2 border-dashed border-blue-500/40"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             />
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-3xl blur opacity-30 animate-pulse left-[-2px] top-[-11px]"></div>
-          </motion.div>
+            {/* Rotating ring 2 */}
+            <motion.div
+              className="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full border border-purple-500/30"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+            />
+            {/* Glow ring */}
+            <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 blur-2xl" />
+            {/* Orbit dots */}
+            <motion.div
+              className="absolute w-80 h-80 sm:w-96 sm:h-96"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-400 shadow-lg shadow-blue-400/50" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-purple-400 shadow-lg shadow-purple-400/50" />
+            </motion.div>
+            <motion.div
+              className="absolute w-72 h-72 sm:w-88 sm:h-88"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+            >
+              <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+              <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-orange-400 shadow-lg shadow-orange-400/50" />
+            </motion.div>
+            {/* Profile photo */}
+            <motion.div
+              className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-blue-500/60 shadow-2xl shadow-blue-500/30 group"
+              animate={{ y: [-6, 6, -6] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <img
+                src="https://i.imgur.com/827jqLg.png"
+                alt="Shourov"
+                className="w-full h-full object-cover object-top"
+                style={{ objectPosition: "50% 10%" }}
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Shourov";
+                }}
+              />
+              {/* Overlay shimmer */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10 pointer-events-none" />
+
+              {/* Animated "Let's Work Together" overlay on hover */}
+              <motion.div
+                className="absolute inset-0 flex flex-col items-center justify-end pb-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <motion.p
+                  className="text-white text-sm font-bold tracking-widest uppercase text-center px-2"
+                  initial={{ y: 10, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {"Let's Work Together".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      className="inline-block"
+                      animate={{ y: [0, -4, 0] }}
+                      transition={{
+                        duration: 0.6,
+                        repeat: Infinity,
+                        delay: i * 0.06,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                </motion.p>
+                <div className="mt-1 w-16 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
+              </motion.div>
+            </motion.div>
+            </div>{/* end photo+rings wrapper */}
+          </div>
         </motion.div>
       </div>
     </section>

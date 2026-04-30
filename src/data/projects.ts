@@ -31,6 +31,17 @@ export interface Project {
 export const projects: Project[] = [
   // UI/UX & Design Projects
   {
+    id: "healthcare-website-uiux",
+    title: "Healthcare Website - UI/UX",
+    description:
+      "A comprehensive healthcare website UI/UX design featuring a clean, modern interface for medical services, patient management, and appointment booking with an intuitive user experience.",
+    techStack: ["Figma", "UI/UX", "Prototyping"],
+    link: "https://www.figma.com/make/OFnry4uD9KGKLMu95b7Cv3/Healthcare-Website-UI-UX-Design?p=f&t=kITwXEySZpP4qtN6-0&fullscreen=1",
+    githubLink: "#",
+    image: "https://i.imgur.com/B8mZFK3.png",
+    category: "uiux",
+  },
+  {
     id: "Education Site",
     title: "Education Site - UI/UX",
     description:
@@ -96,7 +107,6 @@ export const projects: Project[] = [
     image: "https://i.imgur.com/9CdrPCc.png", // 🖼️ ADD YOUR PROJECT IMAGE HERE
     category: "uiux",
   },
-
   // CMS & No-Code Platform Projects
   {
     id: "texhair-wix",
@@ -283,5 +293,43 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
     category: "aiml",
+  },
+
+  {
+    id: "streamlit-ml-apps",
+    title: "Streamlit-Deployed ML Applications",
+    description:
+      "Deployed multiple machine learning models using Streamlit for interactive experimentation and visualization. Built apps including image classification tools and real-time prediction dashboards.",
+    techStack: [
+      "Python",
+      "Streamlit",
+      "Machine Learning",
+      "Data Visualization",
+      "ML Deployment",
+    ],
+    link: "#",
+    githubLink: "#",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    category: "aiml",
+  },
+
+  {
+    id: "university-registration-db",
+    title: "University Registration Database System",
+    description:
+      "Designed a relational database schema to manage students, instructors, courses, and departments. Ensured referential integrity, normalized tables, and optimized SQL queries for efficient registration workflows.",
+    techStack: [
+      "SQL",
+      "MySQL",
+      "Database Design",
+      "Normalization",
+      "Query Optimization",
+    ],
+    link: "#",
+    githubLink: "#",
+    image:
+      "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
+    category: "web",
   },
 ];

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Figma, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Linkedin, Github, Figma, ChevronDown, Menu, X, Phone } from "lucide-react";
 import HeroSection from "./HeroSection";
 import ProjectsSection from "./ProjectsSection";
 import SectionsContainer from "./SectionsContainer";
@@ -10,6 +10,7 @@ const Home = () => {
   const projectsSectionRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Track scroll position for header transparency
   useEffect(() => {
@@ -158,7 +159,7 @@ const Home = () => {
             ASR
           </div>
           
-          {/* Navigation Menu */}
+          {/* Navigation Menu - Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -247,34 +248,104 @@ const Home = () => {
             </button>
           </nav>
 
-          {/* Social Icons */}
-          <div className="flex space-x-4">
+          {/* Right side: Social Icons + Mobile Hamburger */}
+          <div className="flex items-center gap-3">
+            {/* Social Icons - hidden on very small screens */}
+            <div className="hidden sm:flex space-x-3 md:space-x-4">
+              <button
+                className="hover:text-orange-400 transition-colors"
+                onClick={handleHeaderEmailClick}
+              >
+                <Mail size={20} />
+              </button>
+              <button
+                className="hover:text-orange-400 transition-colors"
+                onClick={handleHeaderLinkedInClick}
+              >
+                <Linkedin size={20} />
+              </button>
+              <button
+                className="hover:text-orange-400 transition-colors"
+                onClick={handleHeaderGitHubClick}
+              >
+                <Github size={20} />
+              </button>
+              <button
+                className="hover:text-orange-400 transition-colors"
+                onClick={handleHeaderFigmaClick}
+              >
+                <Figma size={20} />
+              </button>
+            </div>
+
+            {/* Mobile Hamburger */}
             <button
-              className="hover:text-orange-400 transition-colors"
-              onClick={handleHeaderEmailClick}
+              className="md:hidden text-gray-300 hover:text-white transition-colors p-1"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <Mail size={20} />
-            </button>
-            <button
-              className="hover:text-orange-400 transition-colors"
-              onClick={handleHeaderLinkedInClick}
-            >
-              <Linkedin size={20} />
-            </button>
-            <button
-              className="hover:text-orange-400 transition-colors"
-              onClick={handleHeaderGitHubClick}
-            >
-              <Github size={20} />
-            </button>
-            <button
-              className="hover:text-orange-400 transition-colors"
-              onClick={handleHeaderFigmaClick}
-            >
-              <Figma size={20} />
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-gray-900/98 border-t border-gray-800 overflow-hidden"
+            >
+              <div className="container mx-auto px-4 py-4 flex flex-col space-y-1">
+                <button
+                  onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setIsMobileMenuOpen(false); }}
+                  className="text-left text-gray-300 hover:text-blue-400 transition-colors py-2.5 text-sm font-medium border-b border-gray-800/50"
+                >
+                  Home
+                </button>
+                <button
+                  onClick={() => { scrollToSection("about-section"); setIsMobileMenuOpen(false); }}
+                  className="text-left text-gray-300 hover:text-blue-400 transition-colors py-2.5 text-sm font-medium border-b border-gray-800/50"
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => { scrollToSection("projects-section"); setIsMobileMenuOpen(false); }}
+                  className="text-left text-gray-300 hover:text-blue-400 transition-colors py-2.5 text-sm font-medium border-b border-gray-800/50"
+                >
+                  Projects
+                </button>
+                <button
+                  onClick={() => { scrollToSection("experience-section"); setIsMobileMenuOpen(false); }}
+                  className="text-left text-gray-300 hover:text-blue-400 transition-colors py-2.5 text-sm font-medium border-b border-gray-800/50"
+                >
+                  Experience
+                </button>
+                <button
+                  onClick={() => { scrollToSection("expertise-section"); setIsMobileMenuOpen(false); }}
+                  className="text-left text-gray-300 hover:text-blue-400 transition-colors py-2.5 text-sm font-medium border-b border-gray-800/50"
+                >
+                  Expertise
+                </button>
+                <button
+                  onClick={() => { scrollToSection("contact-section"); setIsMobileMenuOpen(false); }}
+                  className="text-left text-gray-300 hover:text-blue-400 transition-colors py-2.5 text-sm font-medium border-b border-gray-800/50"
+                >
+                  Contact
+                </button>
+                {/* Social icons in mobile menu */}
+                <div className="flex space-x-4 pt-3 sm:hidden">
+                  <button className="hover:text-orange-400 transition-colors text-gray-300" onClick={handleHeaderEmailClick}><Mail size={20} /></button>
+                  <button className="hover:text-orange-400 transition-colors text-gray-300" onClick={handleHeaderLinkedInClick}><Linkedin size={20} /></button>
+                  <button className="hover:text-orange-400 transition-colors text-gray-300" onClick={handleHeaderGitHubClick}><Github size={20} /></button>
+                  <button className="hover:text-orange-400 transition-colors text-gray-300" onClick={handleHeaderFigmaClick}><Figma size={20} /></button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
       
       {/* Spacer for fixed header */}
@@ -284,24 +355,79 @@ const Home = () => {
         <HeroSection onScrollToAbout={handleScrollToAbout} onScrollToProjects={handleScrollToProjects} />
       </div>
       {/* About Me Section */}
-      <section id="about-section" className="container mx-auto px-4 py-20">
-        <div className="flex flex-col md:flex-row gap-10 items-center">
-          <div className="w-full md:w-1/3">
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <img
-                src="https://i.imgur.com/DnJWsmf.jpeg"
-                alt="Profile Photo"
-                className="w-full h-auto"
-                onError={(e) => {
-                  e.currentTarget.src =
-                    "https://api.dicebear.com/7.x/avataaars/svg?seed=Shourov";
-                }}
-              />
+      <section id="about-section" className="max-w-[1400px] mx-auto px-4 sm:px-8 py-16 md:py-20">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+          {/* Left side: Project categories + Tech stack bubbles */}
+          <div className="w-full md:w-2/5 flex flex-col items-center gap-8">
+            {/* Project Category Bubbles */}
+            <div className="w-full">
+              <p className="text-center text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Project Categories</p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  { label: "UI/UX Design", color: "from-pink-500/80 to-rose-500/80", glow: "shadow-pink-500/40", border: "border-pink-500/50", icon: "🎨" },
+                  { label: "Web Dev", color: "from-blue-500/80 to-cyan-500/80", glow: "shadow-blue-500/40", border: "border-blue-500/50", icon: "🌐" },
+                  { label: "AI / ML", color: "from-purple-500/80 to-violet-500/80", glow: "shadow-purple-500/40", border: "border-purple-500/50", icon: "🧠" },
+                  { label: "CMS", color: "from-green-500/80 to-emerald-500/80", glow: "shadow-green-500/40", border: "border-green-500/50", icon: "🗂️" },
+                  { label: "Full-Stack", color: "from-orange-500/80 to-amber-500/80", glow: "shadow-orange-500/40", border: "border-orange-500/50", icon: "⚡" },
+                ].map((cat, i) => (
+                  <motion.span
+                    key={cat.label}
+                    initial={{ opacity: 0, scale: 0.7, y: 10 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.08, y: -3 }}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r ${cat.color} border ${cat.border} shadow-lg ${cat.glow} cursor-default select-none`}
+                  >
+                    <span>{cat.icon}</span>
+                    {cat.label}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+            {/* Tech Stack Bubbles */}
+            <div className="w-full">
+              <p className="text-center text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Tech Stack</p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {[
+                  { label: "Python", icon: "🐍", color: "bg-blue-900/60 border-blue-500/40 text-blue-300" },
+                  { label: "React", icon: "⚛️", color: "bg-cyan-900/60 border-cyan-500/40 text-cyan-300" },
+                  { label: "JavaScript", icon: "📜", color: "bg-yellow-900/60 border-yellow-500/40 text-yellow-300" },
+                  { label: "TypeScript", icon: "🔷", color: "bg-blue-900/60 border-blue-400/40 text-blue-200" },
+                  { label: "Node.js", icon: "🟢", color: "bg-green-900/60 border-green-500/40 text-green-300" },
+                  { label: "Flask", icon: "🧪", color: "bg-gray-800/80 border-gray-400/40 text-gray-200" },
+                  { label: "Django", icon: "🌿", color: "bg-green-900/60 border-green-600/40 text-green-200" },
+                  { label: "Figma", icon: "🖌️", color: "bg-purple-900/60 border-purple-500/40 text-purple-300" },
+                  { label: "TensorFlow", icon: "🤖", color: "bg-orange-900/60 border-orange-500/40 text-orange-300" },
+                  { label: "PyTorch", icon: "🔥", color: "bg-red-900/60 border-red-500/40 text-red-300" },
+                  { label: "HTML/CSS", icon: "🌐", color: "bg-red-900/60 border-red-500/40 text-red-300" },
+                  { label: "Bootstrap", icon: "🅱️", color: "bg-violet-900/60 border-violet-500/40 text-violet-300" },
+                  { label: "MySQL", icon: "🗄️", color: "bg-teal-900/60 border-teal-500/40 text-teal-300" },
+                  { label: "Wix", icon: "🔷", color: "bg-indigo-900/60 border-indigo-500/40 text-indigo-300" },
+                  { label: "Squarespace", icon: "◼️", color: "bg-gray-800/80 border-gray-500/40 text-gray-300" },
+                  { label: "Sklearn", icon: "📊", color: "bg-teal-900/60 border-teal-500/40 text-teal-300" },
+                  { label: "Streamlit", icon: "🚀", color: "bg-rose-900/60 border-rose-500/40 text-rose-300" },
+                  { label: "OpenCV", icon: "👁️", color: "bg-blue-900/60 border-blue-600/40 text-blue-200" },
+                ].map((tech, i) => (
+                  <motion.span
+                    key={tech.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: i * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border ${tech.color} cursor-default select-none transition-all duration-200`}
+                  >
+                    <span className="text-sm">{tech.icon}</span>
+                    {tech.label}
+                  </motion.span>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="w-full md:w-2/3">
+          <div className="w-full md:w-3/5">
             <motion.h2
-              className="text-3xl font-bold mb-4"
+              className="text-2xl sm:text-3xl font-bold mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -381,6 +507,12 @@ const Home = () => {
               >
                 <Figma size={16} /> Behance
               </button>
+              <a
+                href="tel:+8801705249560"
+                className="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md transition-colors"
+              >
+                <Phone size={16} /> Call
+              </a>
             </motion.div>
           </div>
         </div>
@@ -392,7 +524,7 @@ const Home = () => {
       {/* Other Sections Container */}
       <SectionsContainer />
       {/* Call to Action Section */}
-      <section id="contact-section" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900 relative overflow-hidden">
+      <section id="contact-section" className="py-16 md:py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-1/4 w-64 h-64 bg-neon-blue/10 rounded-full blur-3xl animate-pulse-slow"></div>
           <div
@@ -408,7 +540,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-6">
               Let's Work Together
             </h2>
             <p className="text-gray-300 text-lg mb-8">
@@ -419,22 +551,28 @@ const Home = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <button
                 onClick={handleAboutEmailClick}
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 rounded-full font-semibold shadow-2xl hover-lift transition-all duration-300"
+                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold shadow-2xl hover-lift transition-all duration-300"
               >
                 <Mail size={20} /> Start a Project
               </button>
               <button
                 onClick={handleAboutLinkedInClick}
-                className="flex items-center gap-2 border-2 border-neon-orange text-neon-orange hover:bg-neon-orange/20 px-8 py-4 rounded-full font-semibold hover-lift transition-all duration-300"
+                className="flex items-center gap-2 border-2 border-neon-orange text-neon-orange hover:bg-neon-orange/20 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover-lift transition-all duration-300"
               >
                 <Linkedin size={20} /> Connect on LinkedIn
               </button>
               <button
                 onClick={handleAboutGitHubClick}
-                className="flex items-center gap-2 border-2 border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white hover:bg-gray-800/50 px-8 py-4 rounded-full font-semibold hover-lift transition-all duration-300"
+                className="flex items-center gap-2 border-2 border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white hover:bg-gray-800/50 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover-lift transition-all duration-300"
               >
                 <Github size={20} /> View My Code
               </button>
+              <a
+                href="tel:+8801705249560"
+                className="flex items-center gap-2 border-2 border-green-500 text-green-400 hover:bg-green-500/20 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover-lift transition-all duration-300"
+              >
+                <Phone size={20} /> 01705-249560
+              </a>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-gray-400">
               <span className="flex items-center gap-2">
@@ -481,8 +619,11 @@ const Home = () => {
               </button>
             </div>
             <p className="text-gray-500 text-sm">
-              &copy; Shourov 2025 — Computer Science Student | AI Enthusiast |
-              Web Developer
+              &copy; Shourov 2025 — Computer Science Graduate | AI Enthusiast |
+              Web Developer | Mirpur-10, Dhaka, Bangladesh
+            </p>
+            <p className="text-gray-600 text-xs mt-2">
+              asrshourov999@gmail.com | 01705-249560
             </p>
           </div>
         </div>
