@@ -163,8 +163,8 @@
 }
 
 @keyframes animate-glow {
-  0%, 100% { text-shadow: 0 0 10px rgba(59,130,246,0.5), 0 0 20px rgba(139,92,246,0.3); }
-  50% { text-shadow: 0 0 25px rgba(59,130,246,0.9), 0 0 50px rgba(139,92,246,0.6), 0 0 80px rgba(249,115,22,0.2); }
+  0%, 100% { text-shadow: 0 0 6px rgba(59,130,246,0.3), 0 0 12px rgba(139,92,246,0.15); }
+  50% { text-shadow: 0 0 12px rgba(59,130,246,0.5), 0 0 22px rgba(139,92,246,0.3); }
 }
 
 .animate-fade-in-up {
