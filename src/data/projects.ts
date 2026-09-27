@@ -40,6 +40,15 @@ export const projects: Project[] = [
     githubLink: "#",
     image: "https://i.imgur.com/B8mZFK3.png",
     category: "uiux",
+  },   {
+    id: 'healthcare-App-uiux',
+    title: 'Healthcare App - UI/UX',
+    description:
+      'Healthcare Mobile App UI/UX Design — Designed a modern healthcare app in Figma for finding doctors, exploring specialties, booking consultations, viewing doctor profiles, selecting locations, and interacting with an AI health assistant. Focused on clean navigation, intuitive user flows, accessibility, and a consistent healthcare-focused visual system.',
+    techStack: ['Figma', 'UI/UX', 'Prototyping'],
+    link: 'https://www.behance.net/gallery/256304169/Healthcare-Mobile-App-UIUX-Design',
+    image: 'https://i.imgur.com/oifV1NB.png',
+    category: 'uiux',
   },
   {
     id: "Education Site",
